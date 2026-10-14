@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 5 – Database Table Creation &amp; Schema</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --navy: #0f172a;
+      --slate: #334155;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --code-bg: #0f172a;
+      --success: #10b981;
+      --accent: #06b6d4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: var(--slate);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* Top Nav */
+    .top-bar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--navy);
+    }
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      background: #0284c7;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+    }
+    .brand-text h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .badge-mod {
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      font-size: 0.88rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      color: var(--slate);
+      background: white;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-action:hover {
+      background: #f1f5f9;
+      color: var(--navy);
+    }
+    .btn-primary {
+      background: #0284c7;
+      color: white;
+      border-color: #0284c7;
+    }
+    .btn-primary:hover {
+      background: #0369a1;
+      color: white;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 32px auto;
+      padding: 0 24px;
+    }
+
+    .header-box {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 30px;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    .header-box h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.9rem;
+      color: var(--navy);
+      font-weight: 800;
+    }
+    .header-box p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 6px;
+    }
+
+    /* Stats bar */
+    .schema-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .stat-pill {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    .stat-lbl {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* Table Cards */
+    .tables-section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      color: var(--navy);
+      font-weight: 700;
+      margin: 36px 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .table-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      overflow: hidden;
+    }
+    .table-card-head {
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .table-name-tag {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .badge-pk {
+      font-size: 0.72rem;
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .badge-fk {
+      font-size: 0.72rem;
+      background: #dbeafe;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .schema-grid {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .schema-grid th {
+      background: #ffffff;
+      color: var(--navy);
+      padding: 10px 16px;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid var(--border);
+    }
+    .schema-grid td {
+      padding: 10px 16px;
+      border-bottom: 1px solid #f1f5f9;
+      color: var(--slate);
+    }
+    .schema-grid tr:last-child td {
+      border-bottom: none;
+    }
+    .type-code {
+      font-family: 'Fira Code', monospace;
+      color: #0284c7;
+      font-weight: 500;
+    }
+
+    /* SQL Code Viewer */
+    .sql-view-container {
+      background: var(--code-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 16px;
+      color: #e2e8f0;
+      position: relative;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s;
+    }
+    .copy-btn:hover {
+      background: rgba(255,255,255,0.25);
+    }
+    pre code {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.84rem;
+      line-height: 1.6;
+      display: block;
+      overflow-x: auto;
+      max-height: 400px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Nav -->
+  <nav class="top-bar">
+    <a href="index.html" class="brand">
+      <div class="brand-icon"><i class="fa fa-database"></i></div>
+      <div class="brand-text">
+        <h1>MediCare Hospital</h1>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <span class="badge-mod"><i class="fa fa-link"></i> Module 5: Database Creation</span>
+      <a href="module5_database.sql" download class="btn-action btn-primary"><i class="fa fa-download"></i> Download .SQL File</a>
+      <a href="index.html" class="btn-action"><i class="fa fa-arrow-left"></i> Main Application</a>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Header Description -->
+    <div class="header-box">
+      <h2>Relational Database Schema &amp; Table Creation</h2>
+      <p>
+        Full DDL (Data Definition Language) SQL specification for the MediCare Hospital Information System. It models departments, users, doctors, patient demographics, appointments, and billing with relational integrity and foreign keys.
+      </p>
+
+      <div class="schema-stats">
+        <div class="stat-pill">
+          <div class="stat-num">6</div>
+          <div class="stat-lbl">Relational Tables</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-num">50+</div>
+          <div class="stat-lbl">Attributes / Columns</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-num">8</div>
+          <div class="stat-lbl">Foreign Key Constraints</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-num">InnoDB</div>
+          <div class="stat-lbl">ACID Compliant Engine</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tables List -->
+    <h3 class="tables-section-title"><i class="fa fa-table-list" style="color:var(--primary)"></i> 1. Core Database Tables</h3>
+
+    <!-- Table 1: DEPARTMENTS -->
+    <div class="table-card">
+      <div class="table-card-head">
+        <div class="table-name-tag"><i class="fa fa-folder-tree"></i> Table: departments</div>
+        <span class="badge-pk">Primary Key: department_id</span>
+      </div>
+      <table class="schema-grid">
+        <thead>
+          <tr><th>Column</th><th>Data Type</th><th>Constraints</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>department_id</strong></td><td class="type-code">INT AUTO_INCREMENT</td><td>PRIMARY KEY</td><td>Unique department identifier</td></tr>
+          <tr><td><strong>department_name</strong></td><td class="type-code">VARCHAR(100)</td><td>NOT NULL, UNIQUE</td><td>e.g. Cardiology, Orthopedics, Pediatrics</td></tr>
+          <tr><td><strong>head_of_department</strong></td><td class="type-code">VARCHAR(100)</td><td>NOT NULL</td><td>Lead HOD Doctor</td></tr>
+          <tr><td><strong>contact_extension</strong></td><td class="type-code">VARCHAR(10)</td><td>NULLABLE</td><td>Internal phone extension number</td></tr>
+          <tr><td><strong>floor_number</strong></td><td class="type-code">VARCHAR(20)</td><td>NULLABLE</td><td>Hospital floor and wing location</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Table 2: USERS -->
+    <div class="table-card">
+      <div class="table-card-head">
+        <div class="table-name-tag"><i class="fa fa-users-gear"></i> Table: users</div>
+        <span class="badge-pk">Primary Key: user_id</span>
+      </div>
+      <table class="schema-grid">
+        <thead>
+          <tr><th>Column</th><th>Data Type</th><th>Constraints</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>user_id</strong></td><td class="type-code">INT AUTO_INCREMENT</td><td>PRIMARY KEY</td><td>Unique user credential ID</td></tr>
+          <tr><td><strong>username</strong></td><td class="type-code">VARCHAR(50)</td><td>NOT NULL, UNIQUE</td><td>Login username</td></tr>
+          <tr><td><strong>password_hash</strong></td><td class="type-code">VARCHAR(255)</td><td>NOT NULL</td><td>Bcrypt hashed password</td></tr>
+          <tr><td><strong>role</strong></td><td class="type-code">ENUM</td><td>'admin', 'doctor', 'receptionist'</td><td>Role-based access level</td></tr>
+          <tr><td><strong>status</strong></td><td class="type-code">ENUM</td><td>'active', 'inactive'</td><td>Account status</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Table 3: DOCTORS -->
+    <div class="table-card">
+      <div class="table-card-head">
+        <div class="table-name-tag"><i class="fa fa-user-doctor"></i> Table: doctors</div>
+        <div>
+          <span class="badge-pk">PK: doctor_id</span>
+          <span class="badge-fk">FK: department_id &rarr; departments</span>
+        </div>
+      </div>
+      <table class="schema-grid">
+        <thead>
+          <tr><th>Column</th><th>Data Type</th><th>Constraints</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>doctor_id</strong></td><td class="type-code">INT AUTO_INCREMENT</td><td>PRIMARY KEY</td><td>Doctor record identifier</td></tr>
+          <tr><td><strong>first_name</strong></td><td class="type-code">VARCHAR(50)</td><td>NOT NULL</td><td>Doctor given name</td></tr>
+          <tr><td><strong>last_name</strong></td><td class="type-code">VARCHAR(50)</td><td>NOT NULL</td><td>Doctor surname</td></tr>
+          <tr><td><strong>specialization</strong></td><td class="type-code">VARCHAR(100)</td><td>NOT NULL</td><td>e.g. Cardiologist, Neurologist</td></tr>
+          <tr><td><strong>department_id</strong></td><td class="type-code">INT</td><td>FOREIGN KEY</td><td>References departments(department_id)</td></tr>
+          <tr><td><strong>license_number</strong></td><td class="type-code">VARCHAR(50)</td><td>NOT NULL, UNIQUE</td><td>Medical council registration license</td></tr>
+          <tr><td><strong>consultation_fee</strong></td><td class="type-code">DECIMAL(10,2)</td><td>NOT NULL</td><td>OPD consultation fee in INR</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Table 4: PATIENTS -->
+    <div class="table-card">
+      <div class="table-card-head">
+        <div class="table-name-tag"><i class="fa fa-bed-pulse"></i> Table: patients</div>
+        <span class="badge-pk">Primary Key: patient_id | UNIQUE: uhid_number</span>
+      </div>
+      <table class="schema-grid">
+        <thead>
+          <tr><th>Column</th><th>Data Type</th><th>Constraints</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>patient_id</strong></td><td class="type-code">INT AUTO_INCREMENT</td><td>PRIMARY KEY</td><td>Internal patient ID</td></tr>
+          <tr><td><strong>uhid_number</strong></td><td class="type-code">VARCHAR(30)</td><td>NOT NULL, UNIQUE</td><td>Hospital Unique Health ID (e.g. MED-2026-001)</td></tr>
+          <tr><td><strong>first_name, last_name</strong></td><td class="type-code">VARCHAR(50)</td><td>NOT NULL</td><td>Patient full legal name</td></tr>
+          <tr><td><strong>date_of_birth</strong></td><td class="type-code">DATE</td><td>NOT NULL</td><td>Birth date for age calculations</td></tr>
+          <tr><td><strong>blood_group</strong></td><td class="type-code">ENUM</td><td>NOT NULL</td><td>A+, A-, B+, B-, AB+, AB-, O+, O-</td></tr>
+          <tr><td><strong>phone_number</strong></td><td class="type-code">VARCHAR(20)</td><td>NOT NULL</td><td>Primary contact phone</td></tr>
+          <tr><td><strong>emergency_phone</strong></td><td class="type-code">VARCHAR(20)</td><td>NOT NULL</td><td>Next-of-kin emergency phone</td></tr>
+          <tr><td><strong>known_allergies</strong></td><td class="type-code">TEXT</td><td>NULLABLE</td><td>Drug allergies (e.g. Penicillin)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Table 5: APPOINTMENTS -->
+    <div class="table-card">
+      <div class="table-card-head">
+        <div class="table-name-tag"><i class="fa fa-calendar-check"></i> Table: appointments</div>
+        <div>
+          <span class="badge-pk">PK: appointment_id</span>
+          <span class="badge-fk">FK: patient_id &amp; doctor_id</span>
+        </div>
+      </div>
+      <table class="schema-grid">
+        <thead>
+          <tr><th>Column</th><th>Data Type</th><th>Constraints</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>appointment_id</strong></td><td class="type-code">INT AUTO_INCREMENT</td><td>PRIMARY KEY</td><td>Appointment record ID</td></tr>
+          <tr><td><strong>appointment_code</strong></td><td class="type-code">VARCHAR(20)</td><td>NOT NULL, UNIQUE</td><td>Token code (e.g. APT-1001)</td></tr>
+          <tr><td><strong>patient_id</strong></td><td class="type-code">INT</td><td>FOREIGN KEY</td><td>References patients(patient_id)</td></tr>
+          <tr><td><strong>doctor_id</strong></td><td class="type-code">INT</td><td>FOREIGN KEY</td><td>References doctors(doctor_id)</td></tr>
+          <tr><td><strong>appointment_date</strong></td><td class="type-code">DATE</td><td>NOT NULL</td><td>Scheduled consultation date</td></tr>
+          <tr><td><strong>appointment_time</strong></td><td class="type-code">TIME</td><td>NOT NULL</td><td>Scheduled consultation slot</td></tr>
+          <tr><td><strong>status</strong></td><td class="type-code">ENUM</td><td>'Scheduled','Completed','Cancelled'</td><td>Consultation progress</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Table 6: BILLING -->
+    <div class="table-card">
+      <div class="table-card-head">
+        <div class="table-name-tag"><i class="fa fa-receipt"></i> Table: billing</div>
+        <div>
+          <span class="badge-pk">PK: bill_id</span>
+          <span class="badge-fk">FK: patient_id &amp; appointment_id</span>
+        </div>
+      </div>
+      <table class="schema-grid">
+        <thead>
+          <tr><th>Column</th><th>Data Type</th><th>Constraints</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>bill_id</strong></td><td class="type-code">INT AUTO_INCREMENT</td><td>PRIMARY KEY</td><td>Billing invoice ID</td></tr>
+          <tr><td><strong>invoice_number</strong></td><td class="type-code">VARCHAR(30)</td><td>NOT NULL, UNIQUE</td><td>e.g. INV-2026-001</td></tr>
+          <tr><td><strong>patient_id</strong></td><td class="type-code">INT</td><td>FOREIGN KEY</td><td>References patients(patient_id)</td></tr>
+          <tr><td><strong>consultation_fee</strong></td><td class="type-code">DECIMAL(10,2)</td><td>DEFAULT 0.00</td><td>Doctor fee</td></tr>
+          <tr><td><strong>lab_tests_fee</strong></td><td class="type-code">DECIMAL(10,2)</td><td>DEFAULT 0.00</td><td>Pathology / Radiology charges</td></tr>
+          <tr><td><strong>tax_amount</strong></td><td class="type-code">DECIMAL(10,2)</td><td>DEFAULT 0.00</td><td>GST / Health Cess</td></tr>
+          <tr><td><strong>total_amount</strong></td><td class="type-code">DECIMAL(10,2)</td><td>NOT NULL</td><td>Net payable amount</td></tr>
+          <tr><td><strong>payment_mode</strong></td><td class="type-code">ENUM</td><td>Cash, Credit Card, UPI, etc.</td><td>Mode of transaction</td></tr>
+          <tr><td><strong>payment_status</strong></td><td class="type-code">ENUM</td><td>'Paid', 'Pending', 'Cancelled'</td><td>Payment clearance</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SQL Code View & Copy -->
+    <h3 class="tables-section-title"><i class="fa fa-code" style="color:var(--primary)"></i> 2. Complete SQL DDL Script</h3>
+    <div class="sql-view-container">
+      <button class="copy-btn" onclick="copySql()"><i class="fa fa-copy"></i> Copy SQL</button>
+      <pre><code id="sqlText">CREATE DATABASE IF NOT EXISTS medicare_hospital_db;
+USE medicare_hospital_db;
+
+CREATE TABLE departments (
+    department_id INT AUTO_INCREMENT PRIMARY KEY,
+    department_name VARCHAR(100) NOT NULL UNIQUE,
+    head_of_department VARCHAR(100) NOT NULL,
+    contact_extension VARCHAR(10),
+    floor_number VARCHAR(20)
+);
+
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    role ENUM('admin', 'doctor', 'receptionist') DEFAULT 'receptionist'
+);
+
+CREATE TABLE doctors (
+    doctor_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    specialization VARCHAR(100) NOT NULL,
+    department_id INT NOT NULL,
+    consultation_fee DECIMAL(10,2) DEFAULT 500.00,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+
+CREATE TABLE patients (
+    patient_id INT AUTO_INCREMENT PRIMARY KEY,
+    uhid_number VARCHAR(30) NOT NULL UNIQUE,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    gender ENUM('Male', 'Female', 'Other') NOT NULL,
+    blood_group VARCHAR(5) NOT NULL,
+    phone_number VARCHAR(20) NOT NULL,
+    emergency_phone VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE appointments (
+    appointment_id INT AUTO_INCREMENT PRIMARY KEY,
+    appointment_code VARCHAR(20) NOT NULL UNIQUE,
+    patient_id INT NOT NULL,
+    doctor_id INT NOT NULL,
+    appointment_date DATE NOT NULL,
+    appointment_time TIME NOT NULL,
+    status ENUM('Scheduled', 'Completed', 'Cancelled') DEFAULT 'Scheduled',
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (doctor_id) REFERENCES doctors(doctor_id)
+);
+
+CREATE TABLE billing (
+    bill_id INT AUTO_INCREMENT PRIMARY KEY,
+    invoice_number VARCHAR(30) NOT NULL UNIQUE,
+    patient_id INT NOT NULL,
+    appointment_id INT,
+    total_amount DECIMAL(10,2) NOT NULL,
+    payment_mode ENUM('Cash', 'Card', 'UPI', 'Insurance') NOT NULL,
+    payment_status ENUM('Paid', 'Pending') DEFAULT 'Paid',
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (appointment_id) REFERENCES appointments(appointment_id)
+);</code></pre>
+    </div>
+
+  </div>
+
+  <script>
+    function copySql() {
+      const sql = document.getElementById('sqlText').innerText;
+      navigator.clipboard.writeText(sql).then(() => {
+        alert('SQL DDL Script copied to clipboard successfully!');
+      });
+    }
+  </script>
+</body>
+</html>

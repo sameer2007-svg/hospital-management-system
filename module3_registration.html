@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 3 – Hospital Patient Registration Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --navy: #0f172a;
+      --slate: #334155;
+      --muted: #64748b;
+      --light-bg: #f8fafc;
+      --border: #cbd5e1;
+      --success: #10b981;
+      --danger: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f1f5f9;
+      color: var(--slate);
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    /* Action bar */
+    .action-bar {
+      max-width: 900px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      padding: 14px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+    .badge-module {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: 700;
+      font-size: 0.82rem;
+      border-radius: 20px;
+    }
+    .btn-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+      transition: all 0.2s ease;
+    }
+    .btn-print:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
+    }
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 8px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+    }
+
+    /* Paper Form */
+    .form-paper {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 40px 48px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      border-top: 6px solid var(--primary);
+    }
+
+    /* Hospital Header */
+    .hospital-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 18px;
+      margin-bottom: 24px;
+    }
+    .brand-flex {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand-symbol {
+      width: 54px;
+      height: 54px;
+      background: #0284c7;
+      color: white;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+    .brand-info h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.5px;
+    }
+    .brand-info p {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+    .meta-box {
+      text-align: right;
+      font-size: 0.82rem;
+      color: var(--slate);
+    }
+    .reg-num {
+      display: inline-block;
+      background: #f1f5f9;
+      border: 1px dashed #94a3b8;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 4px;
+      font-family: monospace;
+      font-size: 0.9rem;
+    }
+
+    .form-heading {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .form-heading h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .form-heading p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Fieldset / Sections */
+    .form-section {
+      margin-bottom: 24px;
+    }
+    .section-legend {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+    }
+    .section-legend i {
+      color: var(--primary);
+    }
+
+    /* Grid Layout */
+    .row-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .col-3 { grid-column: span 3; }
+    .col-4 { grid-column: span 4; }
+    .col-6 { grid-column: span 6; }
+    .col-8 { grid-column: span 8; }
+    .col-12 { grid-column: span 12; }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .field-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+    .field-group label .req {
+      color: var(--danger);
+    }
+    .field-input, .field-select, .field-textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 9px 12px;
+      font-size: 0.88rem;
+      font-family: inherit;
+      color: var(--slate);
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .field-input:focus, .field-select:focus, .field-textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
+    }
+    .field-textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    /* Radio / Checkbox inline */
+    .radio-group {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding-top: 6px;
+    }
+    .radio-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.86rem;
+      cursor: pointer;
+    }
+
+    /* Declaration */
+    .declaration-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.82rem;
+      color: var(--slate);
+      margin-top: 10px;
+    }
+    .sig-block {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 36px;
+      padding-top: 10px;
+    }
+    .sig-line {
+      width: 220px;
+      border-top: 1.5px solid #0f172a;
+      text-align: center;
+      padding-top: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    /* Print styles for high-fidelity PDF */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .action-bar {
+        display: none !important;
+      }
+      .form-paper {
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        padding: 10mm;
+        max-width: 100%;
+      }
+      .field-input, .field-select, .field-textarea {
+        border-color: #94a3b8 !important;
+        background: transparent !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 8mm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Action Bar -->
+  <div class="action-bar">
+    <div style="display:flex; align-items:center; gap: 12px;">
+      <a href="index.html" class="btn-nav"><i class="fa fa-arrow-left"></i> Main Portal</a>
+      <span class="badge-module"><i class="fa fa-file-contract"></i> Module 3: Patient Registration (PDF)</span>
+    </div>
+    <div style="display:flex; gap: 10px;">
+      <button class="btn-print" onclick="window.print()">
+        <i class="fa fa-file-pdf"></i> Print / Save as PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- Registration Document -->
+  <div class="form-paper">
+
+    <!-- Hospital Header -->
+    <header class="hospital-header">
+      <div class="brand-flex">
+        <div class="brand-symbol"><i class="fa-solid fa-hospital"></i></div>
+        <div class="brand-info">
+          <h1>MediCare Super Specialty Hospital</h1>
+          <p>NABH &amp; JCI Accredited | 24x7 Emergency Trauma Center</p>
+          <p style="font-size:0.78rem; color:#64748b;">No. 100, Healthcare Boulevard, Anna Salai, Chennai – 600002</p>
+        </div>
+      </div>
+      <div class="meta-box">
+        <div><strong>Date:</strong> 14-Oct-2026</div>
+        <div><strong>UHID / Reg No:</strong></div>
+        <div class="reg-num">MED-2026-08492</div>
+      </div>
+    </header>
+
+    <div class="form-heading">
+      <h2>In-Patient &amp; Out-Patient Registration Form</h2>
+      <p>Please fill out all mandatory fields (<span style="color:var(--danger)">*</span>) clearly for patient record creation.</p>
+    </div>
+
+    <form id="patientRegForm" onsubmit="event.preventDefault(); alert('Patient Registered Successfully! Record stored in system.');">
+
+      <!-- Section 1: Personal Particulars -->
+      <section class="form-section">
+        <div class="section-legend"><i class="fa fa-user"></i> 1. Patient Demographics</div>
+        
+        <div class="row-grid">
+          <div class="field-group col-4">
+            <label>First Name <span class="req">*</span></label>
+            <input type="text" class="field-input" value="Rajesh" required />
+          </div>
+          <div class="field-group col-4">
+            <label>Middle Name</label>
+            <input type="text" class="field-input" value="Kumar" />
+          </div>
+          <div class="field-group col-4">
+            <label>Last Name <span class="req">*</span></label>
+            <input type="text" class="field-input" value="Sharma" required />
+          </div>
+        </div>
+
+        <div class="row-grid">
+          <div class="field-group col-4">
+            <label>Date of Birth <span class="req">*</span></label>
+            <input type="date" class="field-input" value="1990-06-24" required />
+          </div>
+          <div class="field-group col-2">
+            <label>Age <span class="req">*</span></label>
+            <input type="number" class="field-input" value="36" min="0" max="120" required />
+          </div>
+          <div class="field-group col-3">
+            <label>Gender <span class="req">*</span></label>
+            <select class="field-select" required>
+              <option value="Male" selected>Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field-group col-3">
+            <label>Blood Group <span class="req">*</span></label>
+            <select class="field-select" required>
+              <option value="O+">O Positive (O+)</option>
+              <option value="O-">O Negative (O-)</option>
+              <option value="A+" selected>A Positive (A+)</option>
+              <option value="A-">A Negative (A-)</option>
+              <option value="B+">B Positive (B+)</option>
+              <option value="B-">B Negative (B-)</option>
+              <option value="AB+">AB Positive (AB+)</option>
+              <option value="AB-">AB Negative (AB-)</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Contact & Address -->
+      <section class="form-section">
+        <div class="section-legend"><i class="fa fa-address-book"></i> 2. Contact Information &amp; Address</div>
+        
+        <div class="row-grid">
+          <div class="field-group col-4">
+            <label>Mobile Number <span class="req">*</span></label>
+            <input type="tel" class="field-input" value="+91 98401 23456" required />
+          </div>
+          <div class="field-group col-4">
+            <label>Alternate / Landline Phone</label>
+            <input type="tel" class="field-input" value="044-24567890" />
+          </div>
+          <div class="field-group col-4">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" class="field-input" value="rajesh.sharma@gmail.com" required />
+          </div>
+        </div>
+
+        <div class="row-grid">
+          <div class="field-group col-6">
+            <label>Residential Street Address <span class="req">*</span></label>
+            <input type="text" class="field-input" value="Flat 4B, Emerald Residency, Velachery Main Road" required />
+          </div>
+          <div class="field-group col-3">
+            <label>City <span class="req">*</span></label>
+            <input type="text" class="field-input" value="Chennai" required />
+          </div>
+          <div class="field-group col-3">
+            <label>Pincode / Postal Code <span class="req">*</span></label>
+            <input type="text" class="field-input" value="600042" maxlength="6" required />
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Emergency Contact -->
+      <section class="form-section">
+        <div class="section-legend"><i class="fa fa-phone-volume"></i> 3. Emergency Contact Details</div>
+        
+        <div class="row-grid">
+          <div class="field-group col-4">
+            <label>Contact Person Name <span class="req">*</span></label>
+            <input type="text" class="field-input" value="Priya Sharma" required />
+          </div>
+          <div class="field-group col-4">
+            <label>Relationship <span class="req">*</span></label>
+            <input type="text" class="field-input" value="Spouse / Wife" required />
+          </div>
+          <div class="field-group col-4">
+            <label>Emergency Phone <span class="req">*</span></label>
+            <input type="tel" class="field-input" value="+91 98409 87654" required />
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Clinical Consultation Details -->
+      <section class="form-section">
+        <div class="section-legend"><i class="fa fa-stethoscope"></i> 4. Consultation &amp; Medical History</div>
+        
+        <div class="row-grid">
+          <div class="field-group col-4">
+            <label>Consulting Department <span class="req">*</span></label>
+            <select class="field-select" required>
+              <option value="cardio" selected>Cardiology</option>
+              <option value="ortho">Orthopedics</option>
+              <option value="neuro">Neurology</option>
+              <option value="pedia">Pediatrics</option>
+              <option value="general">General Medicine</option>
+            </select>
+          </div>
+          <div class="field-group col-4">
+            <label>Consulting Doctor <span class="req">*</span></label>
+            <select class="field-select" required>
+              <option selected>Dr. Ananya Iyer, MD (Cardiologist)</option>
+              <option>Dr. Suresh Verma, MS (Orthopedics)</option>
+              <option>Dr. Kavita Nair, MD (General Medicine)</option>
+            </select>
+          </div>
+          <div class="field-group col-4">
+            <label>Patient Category <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="cat" checked /> Out-Patient (OP)</label>
+              <label class="radio-label"><input type="radio" name="cat" /> In-Patient (IP)</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row-grid">
+          <div class="field-group col-6">
+            <label>Chief Complaints &amp; Symptoms</label>
+            <textarea class="field-textarea">Mild chest tightness on exertion for 3 days, intermittent palpitations.</textarea>
+          </div>
+          <div class="field-group col-6">
+            <label>Known Drug Allergies &amp; Pre-existing Conditions</label>
+            <textarea class="field-textarea">Known Allergy: Penicillin. Chronic condition: Hypertension since 2022.</textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Insurance & Billing Declaration -->
+      <section class="form-section">
+        <div class="section-legend"><i class="fa fa-shield-halved"></i> 5. Insurance &amp; Billing Mode</div>
+        <div class="row-grid">
+          <div class="field-group col-4">
+            <label>Payment Category</label>
+            <select class="field-select">
+              <option selected>Corporate Insurance (TPA)</option>
+              <option>Self Finance / Cash</option>
+              <option>Government Scheme (PMJAY)</option>
+            </select>
+          </div>
+          <div class="field-group col-4">
+            <label>TPA / Insurance Provider</label>
+            <input type="text" class="field-input" value="Star Health &amp; Allied Insurance" />
+          </div>
+          <div class="field-group col-4">
+            <label>Policy / Card Number</label>
+            <input type="text" class="field-input" value="SH-CORP-9082341" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Declaration -->
+      <div class="declaration-card">
+        <strong>Patient / Guardian Declaration:</strong><br/>
+        I hereby confirm that all information stated above is accurate and true. I authorize MediCare Super Specialty Hospital and its attending medical staff to administer required diagnostic tests, clinical treatments, and emergency care deemed medically necessary.
+      </div>
+
+      <!-- Signatures -->
+      <div class="sig-block">
+        <div>
+          <div><strong>Place:</strong> Chennai</div>
+          <div style="margin-top:4px;"><strong>Date &amp; Time:</strong> 14-Oct-2026, 11:30 AM</div>
+        </div>
+        <div class="sig-line">
+          Signature of Patient / Relative
+        </div>
+        <div class="sig-line">
+          Hospital Admissions Officer Seal
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>

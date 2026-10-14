@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MediCare Hospital – A modern hospital management system for patient registration, appointments, and billing." />
+  <title>MediCare Hospital – Management System</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ===== PUBLIC HOSPITAL WEBSITE ===== -->
+  <div id="websitePage" class="page active">
+    
+    <!-- Top Emergency Ribbon -->
+    <div class="web-top-ribbon">
+      <div class="ribbon-left">
+        <span><i class="fa fa-phone-volume"></i> 24x7 Emergency: <strong>+91 44 2836 5000</strong></span>
+        <span><i class="fa fa-ambulance"></i> Ambulance Hotline: <strong>108</strong></span>
+        <span><i class="fa fa-location-dot"></i> Anna Salai, Chennai, Tamil Nadu</span>
+      </div>
+      <div>
+        <span class="emergency-tag">NABH &amp; JCI ACCREDITED</span>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="web-navbar">
+      <a href="#" class="web-brand" onclick="navigateToWebsite(); return false;">
+        <div class="web-brand-icon"><i class="fa-solid fa-hospital"></i></div>
+        <div class="web-brand-text">
+          <h2>MediCare</h2>
+          <span>Super Specialty Hospital</span>
+        </div>
+      </a>
+      <ul class="web-nav-links">
+        <li><a href="#webHero" class="active-link">Home</a></li>
+        <li><a href="#modulesSection">Modules 1–6</a></li>
+        <li><a href="#servicesSection">Specialties</a></li>
+        <li><a href="#doctorsSection">Doctors</a></li>
+        <li><a href="#aboutSection">About Us</a></li>
+        <li><a href="#contactSection">Contact</a></li>
+      </ul>
+      <div class="web-nav-actions">
+        <button class="btn-web-outline" onclick="navigateToRegister()">
+          <i class="fa fa-user-plus"></i> Patient Registration
+        </button>
+        <button class="btn-web-primary" onclick="navigateToLogin()">
+          <i class="fa fa-arrow-right-to-bracket"></i> Staff Portal / Login
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="web-hero" id="webHero">
+      <div class="web-hero-container">
+        <div class="web-hero-content">
+          <div class="web-hero-badge"><i class="fa fa-heart-pulse"></i> 24x7 Multi-Specialty Tertiary Care</div>
+          <h1>World-Class Healthcare, <span>Delivered with Compassion.</span></h1>
+          <p>
+            MediCare Super Specialty Hospital provides world-class clinical excellence, state-of-the-art robotic surgeries, 24/7 emergency trauma care, and patient-first digital administration.
+          </p>
+          <div class="web-hero-ctas">
+            <button class="btn-web-primary" onclick="navigateToRegister()" style="padding: 13px 24px; font-size: 1rem;">
+              <i class="fa fa-id-card"></i> Register Patient
+            </button>
+            <button class="btn-web-outline" onclick="navigateToAppt()" style="padding: 12px 22px; font-size: 1rem;">
+              <i class="fa fa-calendar-check"></i> Book Doctor Appointment
+            </button>
+            <a href="#modulesSection" class="btn-web-outline" style="padding: 12px 20px; font-size: 0.95rem; border-color: #64748b; color: #334155;">
+              <i class="fa fa-folder-tree"></i> View Academic Modules
+            </a>
+          </div>
+        </div>
+
+        <div class="web-hero-card">
+          <div class="hero-card-header">
+            <h3>Hospital Quick Access</h3>
+            <span class="hero-live-badge">Live System</span>
+          </div>
+          <div class="quick-feature-list">
+            <div class="quick-feat-item" style="cursor:pointer;" onclick="navigateToRegister()">
+              <div class="feat-icon-box" style="background:#e0f2fe; color:#0284c7;"><i class="fa fa-user-plus"></i></div>
+              <div>
+                <strong style="font-size:0.92rem; color:#0f172a; display:block;">Instant Patient Registration</strong>
+                <span style="font-size:0.8rem; color:#64748b;">Multi-step form with real-time numeric/alpha validation</span>
+              </div>
+            </div>
+            <div class="quick-feat-item" style="cursor:pointer;" onclick="navigateToAppt()">
+              <div class="feat-icon-box" style="background:#fef3c7; color:#d97706;"><i class="fa fa-calendar-check"></i></div>
+              <div>
+                <strong style="font-size:0.92rem; color:#0f172a; display:block;">Doctor Appointment Scheduling</strong>
+                <span style="font-size:0.8rem; color:#64748b;">Schedule OPD slots with specialists instantly</span>
+              </div>
+            </div>
+            <div class="quick-feat-item" style="cursor:pointer;" onclick="navigateToLogin()">
+              <div class="feat-icon-box" style="background:#f0fdf4; color:#16a34a;"><i class="fa fa-file-invoice-dollar"></i></div>
+              <div>
+                <strong style="font-size:0.92rem; color:#0f172a; display:block;">Automated Invoicing &amp; Billing</strong>
+                <span style="font-size:0.8rem; color:#64748b;">Generate printable tax invoices &amp; receipt records</span>
+              </div>
+            </div>
+            <div class="quick-feat-item" style="cursor:pointer;" onclick="navigateToLogin()">
+              <div class="feat-icon-box" style="background:#fdf2f8; color:#db2777;"><i class="fa fa-shield-halved"></i></div>
+              <div>
+                <strong style="font-size:0.92rem; color:#0f172a; display:block;">Hospital Administrative Portal</strong>
+                <span style="font-size:0.8rem; color:#64748b;">Role-based admin, doctor &amp; receptionist dashboard</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic Modules Section (6 Modules) -->
+    <section class="web-modules-section" id="modulesSection">
+      <div class="section-intro-center">
+        <span class="section-pill"><i class="fa fa-graduation-cap"></i> Academic Project Modules</span>
+        <h2>Hospital Management Project Modules</h2>
+        <p>Comprehensive submission units organized per requirements with instant PDF generation and direct links.</p>
+      </div>
+
+      <div class="modules-card-grid">
+        <!-- Module 1 -->
+        <div class="module-box">
+          <div>
+            <div class="module-box-top">
+              <span class="mod-num-tag">MODULE 1</span>
+              <span class="mod-format-badge format-pdf"><i class="fa fa-file-pdf"></i> PDF REQUIRED</span>
+            </div>
+            <h3>Bio-Data Creation (HTML)</h3>
+            <p>Comprehensive curriculum vitae / medical administrator bio-data with print-ready A4 styling, education tables, and declaration.</p>
+          </div>
+          <div class="module-actions">
+            <a href="module1_biodata.html" target="_blank" class="btn-mod-action btn-mod-pdf">
+              <i class="fa fa-print"></i> Open &amp; Save as PDF
+            </a>
+          </div>
+        </div>
+
+        <!-- Module 2 -->
+        <div class="module-box">
+          <div>
+            <div class="module-box-top">
+              <span class="mod-num-tag">MODULE 2</span>
+              <span class="mod-format-badge format-link"><i class="fa fa-link"></i> LINK REQUIRED</span>
+            </div>
+            <h3>Portal Login Page</h3>
+            <p>Dedicated modern login page with multi-role access (Admin, Doctor, Receptionist), password toggle, and credentials helper.</p>
+          </div>
+          <div class="module-actions">
+            <a href="module2_login.html" class="btn-mod-action btn-mod-link">
+              <i class="fa fa-arrow-up-right-from-square"></i> Open Login Page
+            </a>
+            <button onclick="navigateToLogin()" class="btn-mod-action btn-mod-sub">Portal Sign In</button>
+          </div>
+        </div>
+
+        <!-- Module 3 -->
+        <div class="module-box">
+          <div>
+            <div class="module-box-top">
+              <span class="mod-num-tag">MODULE 3</span>
+              <span class="mod-format-badge format-pdf"><i class="fa fa-file-pdf"></i> PDF REQUIRED</span>
+            </div>
+            <h3>Patient Registration Page</h3>
+            <p>Full clinical patient registration form covering demographics, medical history, allergies, emergency contacts, and insurance.</p>
+          </div>
+          <div class="module-actions">
+            <a href="module3_registration.html" target="_blank" class="btn-mod-action btn-mod-pdf">
+              <i class="fa fa-print"></i> Open &amp; Save as PDF
+            </a>
+            <button onclick="navigateToRegister()" class="btn-mod-action btn-mod-sub">Live Form</button>
+          </div>
+        </div>
+
+        <!-- Module 4 -->
+        <div class="module-box">
+          <div>
+            <div class="module-box-top">
+              <span class="mod-num-tag">MODULE 4</span>
+              <span class="mod-format-badge format-pdf"><i class="fa fa-file-pdf"></i> PDF REQUIRED</span>
+            </div>
+            <h3>Validation Scripting Page</h3>
+            <p>Client-side JavaScript input validation system with live keystroke blocker, regular expressions, shake animations, and lab report.</p>
+          </div>
+          <div class="module-actions">
+            <a href="module4_validation.html" target="_blank" class="btn-mod-action btn-mod-pdf">
+              <i class="fa fa-print"></i> Open &amp; Save as PDF
+            </a>
+          </div>
+        </div>
+
+        <!-- Module 5 -->
+        <div class="module-box">
+          <div>
+            <div class="module-box-top">
+              <span class="mod-num-tag">MODULE 5</span>
+              <span class="mod-format-badge format-link"><i class="fa fa-link"></i> LINK REQUIRED</span>
+            </div>
+            <h3>Database Table Creation</h3>
+            <p>Relational SQL database schema with 6 tables (Departments, Users, Doctors, Patients, Appointments, Billing) and constraints.</p>
+          </div>
+          <div class="module-actions">
+            <a href="module5_database.html" class="btn-mod-action btn-mod-link">
+              <i class="fa fa-database"></i> View Schema &amp; SQL
+            </a>
+            <a href="module5_database.sql" download class="btn-mod-action btn-mod-sub"><i class="fa fa-download"></i> .SQL</a>
+          </div>
+        </div>
+
+        <!-- Module 6 -->
+        <div class="module-box">
+          <div>
+            <div class="module-box-top">
+              <span class="mod-num-tag">MODULE 6</span>
+              <span class="mod-format-badge format-link"><i class="fa fa-link"></i> LINK REQUIRED</span>
+            </div>
+            <h3>Overall Final Project</h3>
+            <p>Unified Hospital Management System website integrating patient registration, appointment scheduling, billing, and admin dashboard.</p>
+          </div>
+          <div class="module-actions">
+            <button onclick="navigateToLogin()" class="btn-mod-action btn-mod-link">
+              <i class="fa fa-hospital"></i> Launch Portal
+            </button>
+            <button onclick="navigateToRegister()" class="btn-mod-action btn-mod-sub">Register Patient</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specialties / Clinical Services -->
+    <section class="web-services-section" id="servicesSection">
+      <div class="section-intro-center">
+        <span class="section-pill"><i class="fa fa-stethoscope"></i> Clinical Specialties</span>
+        <h2>Comprehensive Medical Services</h2>
+        <p>Advanced diagnostic facilities, specialized operating theaters, and round-the-clock emergency care.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-heart-pulse"></i></div>
+          <h4>Cardiology &amp; Cardiac Care</h4>
+          <p>Advanced catheterization lab, primary angioplasty, pacemaker implantation, and cardiac intensive care.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-bone"></i></div>
+          <h4>Orthopedics &amp; Joint Replacement</h4>
+          <p>Robotic knee &amp; hip replacement, arthroscopic sports injury repair, and complex trauma management.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-brain"></i></div>
+          <h4>Neurology &amp; Neurosurgery</h4>
+          <p>Micro-neurosurgery, stroke intervention unit, epilepsy management, and neuro-rehabilitation.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-baby"></i></div>
+          <h4>Pediatrics &amp; Neonatology</h4>
+          <p>Level III Neonatal ICU (NICU), pediatric intensive care, growth clinics, and vaccination centers.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-notes-medical"></i></div>
+          <h4>General Medicine &amp; OPD</h4>
+          <p>Comprehensive outpatient care, preventive health screenings, infectious diseases, and diabetes management.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-truck-medical"></i></div>
+          <h4>24/7 Emergency &amp; Trauma</h4>
+          <p>Rapid ambulance dispatch, trauma resuscitation bay, acute stroke care, and emergency triage.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-flask-vial"></i></div>
+          <h4>Diagnostic Laboratory</h4>
+          <p>Automated clinical biochemistry, hematology, microbiology, and molecular diagnostic testing.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fa fa-pills"></i></div>
+          <h4>24/7 In-House Pharmacy</h4>
+          <p>Fully stocked generic &amp; specialty medications with computerized inventory tracking and home delivery.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="web-doctors-section" id="doctorsSection">
+      <div class="section-intro-center">
+        <span class="section-pill"><i class="fa fa-user-doctor"></i> Medical Experts</span>
+        <h2>Our Renowned Consultants</h2>
+        <p>Leading clinicians and surgeons providing expert care across diverse medical specialties.</p>
+      </div>
+
+      <div class="doctors-grid">
+        <div class="doctor-profile-card">
+          <div class="doc-avatar-circle">AI</div>
+          <h4>Dr. Ananya Iyer</h4>
+          <div class="doc-specialty">Chief of Cardiology</div>
+          <div class="doc-qual">MD (Cardiology), DM, FACC</div>
+          <button class="btn-doc-book" onclick="navigateToAppt()"><i class="fa fa-calendar-plus"></i> Book Consultation</button>
+        </div>
+        <div class="doctor-profile-card">
+          <div class="doc-avatar-circle" style="background:#0ea5a0;">SV</div>
+          <h4>Dr. Suresh Verma</h4>
+          <div class="doc-specialty">Senior Orthopedic Surgeon</div>
+          <div class="doc-qual">MS (Ortho), M.Ch (UK)</div>
+          <button class="btn-doc-book" onclick="navigateToAppt()"><i class="fa fa-calendar-plus"></i> Book Consultation</button>
+        </div>
+        <div class="doctor-profile-card">
+          <div class="doc-avatar-circle" style="background:#7c3aed;">KN</div>
+          <h4>Dr. Kavita Nair</h4>
+          <div class="doc-specialty">Consultant Physician</div>
+          <div class="doc-qual">MD (General Medicine)</div>
+          <button class="btn-doc-book" onclick="navigateToAppt()"><i class="fa fa-calendar-plus"></i> Book Consultation</button>
+        </div>
+        <div class="doctor-profile-card">
+          <div class="doc-avatar-circle" style="background:#ea6c00;">RR</div>
+          <h4>Dr. Rajesh Rao</h4>
+          <div class="doc-specialty">Medical Director &amp; Surgeon</div>
+          <div class="doc-qual">MS, FRCS (Edinburgh)</div>
+          <button class="btn-doc-book" onclick="navigateToAppt()"><i class="fa fa-calendar-plus"></i> Book Consultation</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="web-stats-banner">
+      <div class="web-stats-grid">
+        <div class="stat-counter-box">
+          <h3>25,000+</h3>
+          <p>Satisfied Patients</p>
+        </div>
+        <div class="stat-counter-box">
+          <h3>150+</h3>
+          <p>Specialist Doctors</p>
+        </div>
+        <div class="stat-counter-box">
+          <h3>99.4%</h3>
+          <p>Successful Outcomes</p>
+        </div>
+        <div class="stat-counter-box">
+          <h3>24 / 7</h3>
+          <p>Emergency Services</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="web-footer" id="contactSection">
+      <div class="footer-container">
+        <div class="footer-col">
+          <div class="web-brand" style="margin-bottom:14px;">
+            <div class="web-brand-icon"><i class="fa-solid fa-hospital"></i></div>
+            <div class="web-brand-text">
+              <h2 style="color:white;">MediCare</h2>
+              <span style="color:#38bdf8;">Super Specialty Hospital</span>
+            </div>
+          </div>
+          <p style="font-size:0.85rem; line-height:1.6; color:#94a3b8;">
+            A premier healthcare institute committed to clinical quality, advanced medical technology, and patient satisfaction.
+          </p>
+          <div style="margin-top:14px; font-size:0.85rem; color:#cbd5e1;">
+            <div><i class="fa fa-phone" style="color:#38bdf8; margin-right:8px;"></i> +91 44 2836 5000</div>
+            <div style="margin-top:6px;"><i class="fa fa-envelope" style="color:#38bdf8; margin-right:8px;"></i> care@medicarehospital.org</div>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Academic Modules</h5>
+          <ul>
+            <li><a href="module1_biodata.html" target="_blank"><i class="fa fa-file-pdf" style="color:#ef4444; margin-right:6px;"></i> Module 1: Bio-Data (PDF)</a></li>
+            <li><a href="module2_login.html"><i class="fa fa-link" style="color:#38bdf8; margin-right:6px;"></i> Module 2: Login Page</a></li>
+            <li><a href="module3_registration.html" target="_blank"><i class="fa fa-file-pdf" style="color:#ef4444; margin-right:6px;"></i> Module 3: Registration (PDF)</a></li>
+            <li><a href="module4_validation.html" target="_blank"><i class="fa fa-file-pdf" style="color:#ef4444; margin-right:6px;"></i> Module 4: Validation (PDF)</a></li>
+            <li><a href="module5_database.html"><i class="fa fa-link" style="color:#38bdf8; margin-right:6px;"></i> Module 5: Database Schema</a></li>
+            <li><a href="#" onclick="navigateToLogin(); return false;"><i class="fa fa-link" style="color:#38bdf8; margin-right:6px;"></i> Module 6: Full Web App</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Quick Portal Access</h5>
+          <ul>
+            <li><a href="#" onclick="navigateToRegister(); return false;">New Patient Registration</a></li>
+            <li><a href="#" onclick="navigateToAppt(); return false;">Book Appointment</a></li>
+            <li><a href="#" onclick="navigateToLogin(); return false;">Staff &amp; Doctor Sign In</a></li>
+            <li><a href="#" onclick="navigateToLogin(); return false;">Billing &amp; Invoices</a></li>
+            <li><a href="#servicesSection">Departments &amp; OPD</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col" id="aboutSection">
+          <h5>Hospital Location</h5>
+          <p style="font-size:0.84rem; line-height:1.5; color:#94a3b8;">
+            No. 100, Healthcare Boulevard,<br/>
+            Opp. Metro Station, Anna Salai,<br/>
+            Chennai – 600002, Tamil Nadu, India.
+          </p>
+          <div style="margin-top:12px;">
+            <span style="display:inline-block; background:rgba(255,255,255,0.08); padding:4px 8px; border-radius:4px; font-size:0.75rem; color:#38bdf8;">
+              <i class="fa fa-shield-halved"></i> NABH Accredited Hospital
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 MediCare Super Specialty Hospital. All Rights Reserved.</div>
+        <div style="display:flex; gap:16px;">
+          <a href="#" style="color:#94a3b8; text-decoration:none;">Privacy Policy</a>
+          <a href="#" style="color:#94a3b8; text-decoration:none;">Terms of Care</a>
+          <a href="#webHero" style="color:#38bdf8; text-decoration:none;"><i class="fa fa-arrow-up"></i> Back to Top</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===== LOGIN PAGE ===== -->
+  <div id="loginPage" class="page">
+    <div style="position: absolute; top: 20px; left: 24px; z-index: 100;">
+      <button onclick="navigateToWebsite()" class="btn-web-outline" style="background: rgba(11,21,40,0.8); color: white; border-color: rgba(255,255,255,0.2);">
+        <i class="fa fa-arrow-left"></i> Back to Hospital Website
+      </button>
+    </div>
+    <div class="login-bg">
+
+      <div class="login-particles"></div>
+      <div class="login-container">
+        <div class="login-left">
+          <div class="login-brand">
+            <div class="brand-logo">
+              <i class="fa-solid fa-cross"></i>
+            </div>
+            <h1>MediCare<br/><span>Hospital</span></h1>
+          </div>
+          <p class="login-tagline">Excellence in Healthcare, Compassion in Care</p>
+          <div class="login-stats">
+            <div class="stat-item"><span class="stat-number">20K+</span><span class="stat-label">Patients Served</span></div>
+            <div class="stat-item"><span class="stat-number">150+</span><span class="stat-label">Expert Doctors</span></div>
+            <div class="stat-item"><span class="stat-number">98%</span><span class="stat-label">Success Rate</span></div>
+          </div>
+        </div>
+        <div class="login-right">
+          <div class="login-card">
+            <div class="login-card-header">
+              <h2>Welcome Back</h2>
+              <p>Sign in to your hospital portal</p>
+            </div>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+              <div class="form-group">
+                <label for="loginRole">Login As</label>
+                <div class="select-wrapper">
+                  <select id="loginRole">
+                    <option value="admin">Administrator</option>
+                    <option value="doctor">Doctor</option>
+                    <option value="receptionist">Receptionist</option>
+                  </select>
+                  <i class="fa fa-chevron-down"></i>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="loginUsername">Username / Email</label>
+                <div class="input-icon-wrap">
+                  <i class="fa fa-user"></i>
+                  <input type="text" id="loginUsername" placeholder="admin@medicare.com" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <div class="input-icon-wrap">
+                  <i class="fa fa-lock"></i>
+                  <input type="password" id="loginPassword" placeholder="••••••••" required />
+                  <button type="button" class="toggle-pw" onclick="togglePassword()"><i class="fa fa-eye" id="eyeIcon"></i></button>
+                </div>
+              </div>
+              <div class="form-check-row">
+                <label class="checkbox-label"><input type="checkbox" id="rememberMe"/> Remember me</label>
+                <a href="#" class="forgot-link">Forgot Password?</a>
+              </div>
+              <button type="submit" class="btn-primary btn-full" id="loginBtn">
+                <span>Sign In</span><i class="fa fa-arrow-right"></i>
+              </button>
+              <div class="login-hint">
+                <i class="fa fa-info-circle"></i>
+                Demo: any username &amp; password → <b>admin</b>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MAIN APP (after login) ===== -->
+  <div id="mainApp" class="page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <div class="sidebar-logo"><i class="fa-solid fa-cross"></i></div>
+        <div>
+          <span class="sidebar-title">MediCare</span>
+          <span class="sidebar-sub">Hospital</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Main Menu</div>
+        <a href="#" class="nav-item active" onclick="showSection('dashboard', this)" id="nav-dashboard">
+          <i class="fa fa-gauge-high"></i><span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showSection('registration', this)" id="nav-registration">
+          <i class="fa fa-user-plus"></i><span>Patient Registration</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showSection('appointments', this)" id="nav-appointments">
+          <i class="fa fa-calendar-check"></i><span>Appointments</span>
+          <span class="badge" id="apptBadge">0</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showSection('patients', this)" id="nav-patients">
+          <i class="fa fa-hospital-user"></i><span>Patient List</span>
+        </a>
+        <div class="nav-section-label">Finance</div>
+        <a href="#" class="nav-item" onclick="showSection('billing', this)" id="nav-billing">
+          <i class="fa fa-file-invoice-dollar"></i><span>Billing</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showSection('reports', this)" id="nav-reports">
+          <i class="fa fa-chart-line"></i><span>Reports</span>
+        </a>
+        <div class="nav-section-label">Hospital Website</div>
+        <a href="#" class="nav-item" onclick="navigateToWebsite()">
+          <i class="fa fa-globe"></i><span>Hospital Homepage</span>
+        </a>
+        <a href="module1_biodata.html" target="_blank" class="nav-item">
+          <i class="fa fa-file-pdf" style="color:#ef4444;"></i><span>Module 1: Bio-Data</span>
+        </a>
+        <a href="module2_login.html" target="_blank" class="nav-item">
+          <i class="fa fa-link" style="color:#38bdf8;"></i><span>Module 2: Login Page</span>
+        </a>
+        <a href="module3_registration.html" target="_blank" class="nav-item">
+          <i class="fa fa-file-pdf" style="color:#ef4444;"></i><span>Module 3: Registration</span>
+        </a>
+        <a href="module4_validation.html" target="_blank" class="nav-item">
+          <i class="fa fa-file-pdf" style="color:#ef4444;"></i><span>Module 4: Validation</span>
+        </a>
+        <a href="module5_database.html" target="_blank" class="nav-item">
+          <i class="fa fa-database" style="color:#10b981;"></i><span>Module 5: Database</span>
+        </a>
+        <a href="#" class="nav-item logout-item" onclick="handleLogout()">
+          <i class="fa fa-right-from-bracket"></i><span>Logout</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- TOP NAV -->
+    <div class="main-content" id="mainContent">
+      <header class="topbar">
+        <button class="hamburger" onclick="toggleSidebar()" id="hamburgerBtn"><i class="fa fa-bars"></i></button>
+        <div class="topbar-search">
+          <i class="fa fa-magnifying-glass"></i>
+          <input type="text" placeholder="Search patients, appointments…" id="globalSearch" oninput="globalSearchFn()" />
+        </div>
+        <div class="topbar-right">
+          <div class="topbar-date"><i class="fa fa-calendar"></i> <span id="currentDate"></span></div>
+          <button class="notif-btn" onclick="toggleNotif()">
+            <i class="fa fa-bell"></i>
+            <span class="notif-dot" id="notifDot"></span>
+          </button>
+          <div class="user-avatar" id="userAvatar" onclick="toggleUserMenu()">
+            <span id="avatarInitial">A</span>
+            <span id="avatarName">Admin</span>
+            <i class="fa fa-chevron-down"></i>
+          </div>
+        </div>
+        <!-- Notification dropdown -->
+        <div class="notif-dropdown" id="notifDropdown">
+          <div class="notif-header"><span>Notifications</span><button onclick="clearNotifs()">Clear All</button></div>
+          <div id="notifList"></div>
+        </div>
+        <!-- User menu -->
+        <div class="user-dropdown" id="userDropdown">
+          <div class="user-info-dd">
+            <div class="ud-avatar" id="udAvatar">A</div>
+            <div><p id="udName">Administrator</p><small id="udEmail">admin@medicare.com</small></div>
+          </div>
+          <hr/>
+          <a href="#" onclick="handleLogout()"><i class="fa fa-right-from-bracket"></i> Logout</a>
+        </div>
+      </header>
+
+      <!-- =========== SECTIONS =========== -->
+
+      <!-- DASHBOARD -->
+      <section id="secDashboard" class="section active">
+        <div class="section-header">
+          <div>
+            <h2>Dashboard</h2>
+            <p>Welcome back! Here's what's happening today.</p>
+          </div>
+          <div class="section-header-actions">
+            <button class="btn-outline" onclick="exportDashboard()"><i class="fa fa-download"></i> Export</button>
+          </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card kpi-blue">
+            <div class="kpi-icon"><i class="fa fa-hospital-user"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-label">Total Patients</span>
+              <span class="kpi-value" id="kpiPatients">0</span>
+              <span class="kpi-change positive"><i class="fa fa-arrow-up"></i> 12% this month</span>
+            </div>
+          </div>
+          <div class="kpi-card kpi-teal">
+            <div class="kpi-icon"><i class="fa fa-calendar-check"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-label">Appointments Today</span>
+              <span class="kpi-value" id="kpiAppts">0</span>
+              <span class="kpi-change positive"><i class="fa fa-arrow-up"></i> 5 pending</span>
+            </div>
+          </div>
+          <div class="kpi-card kpi-green">
+            <div class="kpi-icon"><i class="fa fa-indian-rupee-sign"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-label">Revenue Today</span>
+              <span class="kpi-value" id="kpiRevenue">₹0</span>
+              <span class="kpi-change positive"><i class="fa fa-arrow-up"></i> 8% vs yesterday</span>
+            </div>
+          </div>
+          <div class="kpi-card kpi-orange">
+            <div class="kpi-icon"><i class="fa fa-user-doctor"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-label">Doctors Available</span>
+              <span class="kpi-value" id="kpiDoctors">8</span>
+              <span class="kpi-change neutral"><i class="fa fa-minus"></i> Out of 12</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent + Quick Actions -->
+        <div class="dash-grid">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa fa-clock-rotate-left"></i> Recent Patients</h3>
+              <button class="btn-text" onclick="showSection('patients', document.getElementById('nav-patients'))">View All</button>
+            </div>
+            <div id="recentPatientsList" class="recent-list"></div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3><i class="fa fa-bolt"></i> Quick Actions</h3>
+            </div>
+            <div class="quick-actions-grid">
+              <button class="qa-btn" onclick="showSection('registration', document.getElementById('nav-registration'))">
+                <i class="fa fa-user-plus"></i><span>Register Patient</span>
+              </button>
+              <button class="qa-btn" onclick="showSection('appointments', document.getElementById('nav-appointments'))">
+                <i class="fa fa-calendar-plus"></i><span>New Appointment</span>
+              </button>
+              <button class="qa-btn" onclick="showSection('billing', document.getElementById('nav-billing'))">
+                <i class="fa fa-file-invoice"></i><span>Generate Bill</span>
+              </button>
+              <button class="qa-btn" onclick="showSection('reports', document.getElementById('nav-reports'))">
+                <i class="fa fa-chart-pie"></i><span>View Reports</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming Appointments -->
+        <div class="dash-card mt-20">
+          <div class="dash-card-header">
+            <h3><i class="fa fa-calendar-days"></i> Upcoming Appointments</h3>
+            <button class="btn-text" onclick="showSection('appointments', document.getElementById('nav-appointments'))">Manage</button>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table" id="dashApptTable">
+              <thead><tr><th>Patient</th><th>Doctor</th><th>Date</th><th>Time</th><th>Status</th></tr></thead>
+              <tbody id="dashApptBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- PATIENT REGISTRATION -->
+      <section id="secRegistration" class="section">
+        <div class="section-header">
+          <div>
+            <h2>Patient Registration</h2>
+            <p>Register new patients into the system</p>
+          </div>
+          <div class="section-header-actions">
+            <button class="btn-outline" onclick="resetRegistrationForm()"><i class="fa fa-rotate-left"></i> Reset</button>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <form id="registrationForm" onsubmit="handleRegistration(event)">
+
+            <!-- Progress Steps -->
+            <div class="form-steps">
+              <div class="step active" id="step1Indicator"><span class="step-num">1</span><span class="step-label">Personal Info</span></div>
+              <div class="step-line"></div>
+              <div class="step" id="step2Indicator"><span class="step-num">2</span><span class="step-label">Medical Info</span></div>
+              <div class="step-line"></div>
+              <div class="step" id="step3Indicator"><span class="step-num">3</span><span class="step-label">Emergency Contact</span></div>
+            </div>
+
+            <!-- Step 1: Personal Info -->
+            <div class="form-step-content" id="regStep1">
+              <h3 class="step-title"><i class="fa fa-user"></i> Personal Information</h3>
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label for="regFirstName">First Name <span class="required">*</span></label>
+                  <input type="text" id="regFirstName" placeholder="Enter first name" required />
+                </div>
+                <div class="form-group">
+                  <label for="regMiddleName">Middle Name</label>
+                  <input type="text" id="regMiddleName" placeholder="Enter middle name" />
+                </div>
+                <div class="form-group">
+                  <label for="regLastName">Last Name <span class="required">*</span></label>
+                  <input type="text" id="regLastName" placeholder="Enter last name" required />
+                </div>
+              </div>
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label for="regDOB">Date of Birth <span class="required">*</span></label>
+                  <input type="date" id="regDOB" required onchange="calculateAge()" />
+                </div>
+                <div class="form-group">
+                  <label for="regAge">Age</label>
+                  <input type="number" id="regAge" placeholder="Auto-calculated" readonly />
+                </div>
+                <div class="form-group">
+                  <label for="regGender">Gender <span class="required">*</span></label>
+                  <div class="select-wrapper">
+                    <select id="regGender" required>
+                      <option value="">Select Gender</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>Other</option>
+                    </select>
+                    <i class="fa fa-chevron-down"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="regPhone">Phone Number <span class="required">*</span></label>
+                  <div class="input-icon-wrap">
+                    <i class="fa fa-phone"></i>
+                    <input type="tel" id="regPhone" placeholder="+91 98765 43210" required pattern="[0-9+\-\s]{10,15}" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="regEmail">Email Address</label>
+                  <div class="input-icon-wrap">
+                    <i class="fa fa-envelope"></i>
+                    <input type="email" id="regEmail" placeholder="patient@email.com" />
+                  </div>
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="regBloodGroup">Blood Group <span class="required">*</span></label>
+                  <div class="select-wrapper">
+                    <select id="regBloodGroup" required>
+                      <option value="">Select Blood Group</option>
+                      <option>A+</option><option>A-</option>
+                      <option>B+</option><option>B-</option>
+                      <option>AB+</option><option>AB-</option>
+                      <option>O+</option><option>O-</option>
+                    </select>
+                    <i class="fa fa-chevron-down"></i>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="regMarital">Marital Status</label>
+                  <div class="select-wrapper">
+                    <select id="regMarital">
+                      <option value="">Select Status</option>
+                      <option>Single</option><option>Married</option>
+                      <option>Divorced</option><option>Widowed</option>
+                    </select>
+                    <i class="fa fa-chevron-down"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="regAddress">Address <span class="required">*</span></label>
+                <textarea id="regAddress" rows="3" placeholder="Enter full address including city, state, pincode" required></textarea>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="regCity">City <span class="required">*</span></label>
+                  <input type="text" id="regCity" placeholder="City" required />
+                </div>
+                <div class="form-group">
+                  <label for="regPincode">Pincode</label>
+                  <input type="text" id="regPincode" placeholder="Pincode" pattern="[0-9]{6}" />
+                </div>
+              </div>
+              <div class="form-nav">
+                <span></span>
+                <button type="button" class="btn-primary" onclick="nextStep(2)">Next <i class="fa fa-arrow-right"></i></button>
+              </div>
+            </div>
+
+            <!-- Step 2: Medical Info -->
+            <div class="form-step-content hidden" id="regStep2">
+              <h3 class="step-title"><i class="fa fa-stethoscope"></i> Medical Information</h3>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="regDept">Department <span class="required">*</span></label>
+                  <div class="select-wrapper">
+                    <select id="regDept" required onchange="filterDoctorsByDept()">
+                      <option value="">Select Department</option>
+                      <option>General Medicine</option>
+                      <option>Cardiology</option>
+                      <option>Orthopedics</option>
+                      <option>Neurology</option>
+                      <option>Pediatrics</option>
+                      <option>Gynecology</option>
+                      <option>Dermatology</option>
+                      <option>ENT</option>
+                      <option>Ophthalmology</option>
+                      <option>Dentistry</option>
+                      <option>Psychiatry</option>
+                    </select>
+                    <i class="fa fa-chevron-down"></i>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="regDoctor">Consulting Doctor <span class="required">*</span></label>
+                  <div class="select-wrapper">
+                    <select id="regDoctor" required>
+                      <option value="">Select Doctor</option>
+                    </select>
+                    <i class="fa fa-chevron-down"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label for="regPatientType">Patient Type <span class="required">*</span></label>
+                  <div class="select-wrapper">
+                    <select id="regPatientType" required>
+                      <option value="">Select Type</option>
+                      <option value="Outpatient">Outpatient (OPD)</option>
+                      <option value="Inpatient">Inpatient (IPD)</option>
+                      <option value="Emergency">Emergency</option>
+                    </select>
+                    <i class="fa fa-chevron-down"></i>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="regAdmDate">Admission Date</label>
+                  <input type="date" id="regAdmDate" />
+                </div>
+                <div class="form-group">
+                  <label for="regWardRoom">Ward / Room No.</label>
+                  <input type="text" id="regWardRoom" placeholder="e.g. Ward A, Room 102" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="regChiefComplaint">Chief Complaint / Symptoms <span class="required">*</span></label>
+                <textarea id="regChiefComplaint" rows="3" placeholder="Describe the patient's main complaint or symptoms…" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="regMedHistory">Medical History</label>
+                <textarea id="regMedHistory" rows="2" placeholder="Previous illnesses, surgeries, hospitalizations…"></textarea>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="regAllergies">Known Allergies</label>
+                  <input type="text" id="regAllergies" placeholder="e.g. Penicillin, Peanuts, None" />
+                </div>
+                <div class="form-group">
+                  <label for="regInsurance">Insurance Provider</label>
+                  <input type="text" id="regInsurance" placeholder="Insurance company name or 'Self-Pay'" />
+                </div>
+              </div>
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label for="regHeight">Height (cm)</label>
+                  <input type="number" id="regHeight" placeholder="170" min="30" max="250" />
+                </div>
+                <div class="form-group">
+                  <label for="regWeight">Weight (kg)</label>
+                  <input type="number" id="regWeight" placeholder="65" min="1" max="300" />
+                </div>
+                <div class="form-group">
+                  <label>BMI</label>
+                  <input type="text" id="regBMI" placeholder="Auto-calculated" readonly />
+                </div>
+              </div>
+              <div class="form-nav">
+                <button type="button" class="btn-outline" onclick="nextStep(1)"><i class="fa fa-arrow-left"></i> Back</button>
+                <button type="button" class="btn-primary" onclick="nextStep(3)">Next <i class="fa fa-arrow-right"></i></button>
+              </div>
+            </div>
+
+            <!-- Step 3: Emergency Contact -->
+            <div class="form-step-content hidden" id="regStep3">
+              <h3 class="step-title"><i class="fa fa-phone-volume"></i> Emergency Contact</h3>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="regEmgName">Contact Name <span class="required">*</span></label>
+                  <input type="text" id="regEmgName" placeholder="Full name" required />
+                </div>
+                <div class="form-group">
+                  <label for="regEmgRelation">Relationship <span class="required">*</span></label>
+                  <div class="select-wrapper">
+                    <select id="regEmgRelation" required>
+                      <option value="">Select Relationship</option>
+                      <option>Spouse</option><option>Parent</option>
+                      <option>Child</option><option>Sibling</option>
+                      <option>Friend</option><option>Other</option>
+                    </select>
+                    <i class="fa fa-chevron-down"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="regEmgPhone">Contact Phone <span class="required">*</span></label>
+                  <div class="input-icon-wrap">
+                    <i class="fa fa-phone"></i>
+                    <input type="tel" id="regEmgPhone" placeholder="+91 98765 43210" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="regEmgEmail">Contact Email</label>
+                  <div class="input-icon-wrap">
+                    <i class="fa fa-envelope"></i>
+                    <input type="email" id="regEmgEmail" placeholder="contact@email.com" />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="regEmgAddress">Contact Address</label>
+                <textarea id="regEmgAddress" rows="2" placeholder="Emergency contact's address"></textarea>
+              </div>
+
+              <!-- ID Proof -->
+              <h3 class="step-title mt-20"><i class="fa fa-id-card"></i> Identity Proof</h3>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="regIdType">ID Type</label>
+                  <div class="select-wrapper">
+                    <select id="regIdType">
+                      <option value="">Select ID Type</option>
+                      <option>Aadhaar Card</option>
+                      <option>PAN Card</option>
+                      <option>Voter ID</option>
+                      <option>Passport</option>
+                      <option>Driving License</option>
+                    </select>
+                    <i class="fa fa-chevron-down"></i>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="regIdNumber">ID Number</label>
+                  <input type="text" id="regIdNumber" placeholder="Enter ID number" />
+                </div>
+              </div>
+
+              <!-- Patient Photo placeholder -->
+              <div class="form-group">
+                <label>Upload Photo (Optional)</label>
+                <div class="upload-zone" onclick="document.getElementById('regPhoto').click()">
+                  <i class="fa fa-cloud-arrow-up"></i>
+                  <span>Click to upload patient photo</span>
+                  <small>JPG, PNG – max 2MB</small>
+                  <input type="file" id="regPhoto" accept="image/*" style="display:none" onchange="previewPhoto(event)"/>
+                </div>
+                <img id="photoPreview" class="photo-preview hidden" alt="Patient Photo Preview" />
+              </div>
+
+              <div class="form-nav">
+                <button type="button" class="btn-outline" onclick="nextStep(2)"><i class="fa fa-arrow-left"></i> Back</button>
+                <button type="submit" class="btn-primary btn-green">
+                  <i class="fa fa-check"></i> Register Patient
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- APPOINTMENTS -->
+      <section id="secAppointments" class="section">
+        <div class="section-header">
+          <div>
+            <h2>Appointment Management</h2>
+            <p>Schedule and manage patient appointments</p>
+          </div>
+          <div class="section-header-actions">
+            <button class="btn-primary" onclick="openApptModal()"><i class="fa fa-plus"></i> New Appointment</button>
+          </div>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="filter-bar">
+          <div class="input-icon-wrap filter-search">
+            <i class="fa fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search appointments…" id="apptSearch" oninput="filterAppointments()" />
+          </div>
+          <div class="select-wrapper filter-select">
+            <select id="apptStatusFilter" onchange="filterAppointments()">
+              <option value="">All Status</option>
+              <option>Scheduled</option>
+              <option>Completed</option>
+              <option>Cancelled</option>
+              <option>Pending</option>
+            </select>
+            <i class="fa fa-chevron-down"></i>
+          </div>
+          <div class="select-wrapper filter-select">
+            <select id="apptDeptFilter" onchange="filterAppointments()">
+              <option value="">All Departments</option>
+              <option>General Medicine</option>
+              <option>Cardiology</option>
+              <option>Orthopedics</option>
+              <option>Neurology</option>
+              <option>Pediatrics</option>
+              <option>Gynecology</option>
+              <option>Dermatology</option>
+              <option>ENT</option>
+            </select>
+            <i class="fa fa-chevron-down"></i>
+          </div>
+          <input type="date" id="apptDateFilter" onchange="filterAppointments()" class="date-filter" />
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table" id="appointmentsTable">
+            <thead>
+              <tr>
+                <th>Appt. ID</th>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Department</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="appointmentsBody"></tbody>
+          </table>
+          <div class="empty-state hidden" id="apptEmpty">
+            <i class="fa fa-calendar-xmark"></i>
+            <p>No appointments found</p>
+            <button class="btn-primary" onclick="openApptModal()">Schedule First Appointment</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PATIENT LIST -->
+      <section id="secPatients" class="section">
+        <div class="section-header">
+          <div>
+            <h2>Patient Records</h2>
+            <p>View and manage all registered patients</p>
+          </div>
+          <div class="section-header-actions">
+            <button class="btn-outline" onclick="exportPatients()"><i class="fa fa-download"></i> Export CSV</button>
+            <button class="btn-primary" onclick="showSection('registration', document.getElementById('nav-registration'))"><i class="fa fa-plus"></i> Register</button>
+          </div>
+        </div>
+
+        <div class="filter-bar">
+          <div class="input-icon-wrap filter-search">
+            <i class="fa fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search patients by name, ID, phone…" id="patientSearch" oninput="filterPatients()" />
+          </div>
+          <div class="select-wrapper filter-select">
+            <select id="patientGenderFilter" onchange="filterPatients()">
+              <option value="">All Genders</option>
+              <option>Male</option><option>Female</option><option>Other</option>
+            </select>
+            <i class="fa fa-chevron-down"></i>
+          </div>
+          <div class="select-wrapper filter-select">
+            <select id="patientDeptFilter" onchange="filterPatients()">
+              <option value="">All Departments</option>
+              <option>General Medicine</option><option>Cardiology</option>
+              <option>Orthopedics</option><option>Neurology</option>
+              <option>Pediatrics</option><option>Gynecology</option>
+            </select>
+            <i class="fa fa-chevron-down"></i>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Patient ID</th>
+                <th>Name</th>
+                <th>Age/Gender</th>
+                <th>Blood Group</th>
+                <th>Department</th>
+                <th>Doctor</th>
+                <th>Phone</th>
+                <th>Type</th>
+                <th>Registered</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="patientListBody"></tbody>
+          </table>
+          <div class="empty-state hidden" id="patientEmpty">
+            <i class="fa fa-user-slash"></i>
+            <p>No patients registered yet</p>
+            <button class="btn-primary" onclick="showSection('registration', document.getElementById('nav-registration'))">Register First Patient</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- BILLING -->
+      <section id="secBilling" class="section">
+        <div class="section-header">
+          <div>
+            <h2>Billing & Invoices</h2>
+            <p>Generate and manage patient bills</p>
+          </div>
+          <div class="section-header-actions">
+            <button class="btn-primary" onclick="openBillModal()"><i class="fa fa-plus"></i> New Bill</button>
+          </div>
+        </div>
+
+        <!-- Bill summary cards -->
+        <div class="kpi-grid-3">
+          <div class="kpi-card kpi-blue mini">
+            <div class="kpi-icon"><i class="fa fa-file-invoice-dollar"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-label">Total Bills</span>
+              <span class="kpi-value" id="kpiBillCount">0</span>
+            </div>
+          </div>
+          <div class="kpi-card kpi-green mini">
+            <div class="kpi-icon"><i class="fa fa-circle-check"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-label">Total Collected</span>
+              <span class="kpi-value" id="kpiBillPaid">₹0</span>
+            </div>
+          </div>
+          <div class="kpi-card kpi-orange mini">
+            <div class="kpi-icon"><i class="fa fa-circle-exclamation"></i></div>
+            <div class="kpi-info">
+              <span class="kpi-label">Pending Amount</span>
+              <span class="kpi-value" id="kpiBillPending">₹0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-bar">
+          <div class="input-icon-wrap filter-search">
+            <i class="fa fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search bills…" id="billSearch" oninput="filterBills()" />
+          </div>
+          <div class="select-wrapper filter-select">
+            <select id="billStatusFilter" onchange="filterBills()">
+              <option value="">All Status</option>
+              <option>Paid</option>
+              <option>Pending</option>
+              <option>Partial</option>
+            </select>
+            <i class="fa fa-chevron-down"></i>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Bill No.</th>
+                <th>Patient</th>
+                <th>Date</th>
+                <th>Services</th>
+                <th>Subtotal</th>
+                <th>Discount</th>
+                <th>Tax</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="billingBody"></tbody>
+          </table>
+          <div class="empty-state hidden" id="billEmpty">
+            <i class="fa fa-file-invoice"></i>
+            <p>No bills generated yet</p>
+            <button class="btn-primary" onclick="openBillModal()">Create First Bill</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- REPORTS -->
+      <section id="secReports" class="section">
+        <div class="section-header">
+          <div>
+            <h2>Reports & Analytics</h2>
+            <p>Insights into hospital performance</p>
+          </div>
+        </div>
+        <div class="kpi-grid">
+          <div class="kpi-card kpi-blue"><div class="kpi-icon"><i class="fa fa-users"></i></div><div class="kpi-info"><span class="kpi-label">Total Patients</span><span class="kpi-value" id="rptPatients">0</span></div></div>
+          <div class="kpi-card kpi-teal"><div class="kpi-icon"><i class="fa fa-calendar"></i></div><div class="kpi-info"><span class="kpi-label">Total Appointments</span><span class="kpi-value" id="rptAppts">0</span></div></div>
+          <div class="kpi-card kpi-green"><div class="kpi-icon"><i class="fa fa-indian-rupee-sign"></i></div><div class="kpi-info"><span class="kpi-label">Total Revenue</span><span class="kpi-value" id="rptRevenue">₹0</span></div></div>
+          <div class="kpi-card kpi-orange"><div class="kpi-icon"><i class="fa fa-receipt"></i></div><div class="kpi-info"><span class="kpi-label">Total Bills</span><span class="kpi-value" id="rptBills">0</span></div></div>
+        </div>
+        <div class="dash-grid">
+          <div class="dash-card">
+            <div class="dash-card-header"><h3><i class="fa fa-chart-pie"></i> Patients by Department</h3></div>
+            <div id="deptChart" class="chart-container"></div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-header"><h3><i class="fa fa-venus-mars"></i> Patients by Gender</h3></div>
+            <div id="genderChart" class="chart-container"></div>
+          </div>
+        </div>
+        <div class="dash-card mt-20">
+          <div class="dash-card-header"><h3><i class="fa fa-list"></i> Department Summary</h3></div>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead><tr><th>Department</th><th>Patients</th><th>Appointments</th><th>Revenue</th></tr></thead>
+              <tbody id="deptSummaryBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- DOCTORS -->
+      <section id="secDoctors" class="section">
+        <div class="section-header">
+          <div>
+            <h2>Doctors Directory</h2>
+            <p>Manage hospital doctors and staff</p>
+          </div>
+          <div class="section-header-actions">
+            <button class="btn-primary" onclick="openDoctorModal()"><i class="fa fa-plus"></i> Add Doctor</button>
+          </div>
+        </div>
+        <div class="doctors-grid" id="doctorsGrid"></div>
+      </section>
+
+    </div><!-- /main-content -->
+  </div><!-- /mainApp -->
+
+  <!-- ============================================================ -->
+  <!-- MODALS -->
+
+  <!-- Appointment Modal -->
+  <div class="modal-overlay hidden" id="apptModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="apptModalTitle"><i class="fa fa-calendar-plus"></i> New Appointment</h3>
+        <button class="modal-close" onclick="closeApptModal()"><i class="fa fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="apptForm" onsubmit="saveAppointment(event)">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="apptPatient">Patient <span class="required">*</span></label>
+              <div class="select-wrapper">
+                <select id="apptPatient" required>
+                  <option value="">Select Patient</option>
+                </select>
+                <i class="fa fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="apptDeptM">Department <span class="required">*</span></label>
+              <div class="select-wrapper">
+                <select id="apptDeptM" required onchange="filterDoctorsAppt()">
+                  <option value="">Select Department</option>
+                  <option>General Medicine</option>
+                  <option>Cardiology</option>
+                  <option>Orthopedics</option>
+                  <option>Neurology</option>
+                  <option>Pediatrics</option>
+                  <option>Gynecology</option>
+                  <option>Dermatology</option>
+                  <option>ENT</option>
+                  <option>Ophthalmology</option>
+                  <option>Dentistry</option>
+                </select>
+                <i class="fa fa-chevron-down"></i>
+              </div>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="apptDoctorM">Doctor <span class="required">*</span></label>
+              <div class="select-wrapper">
+                <select id="apptDoctorM" required>
+                  <option value="">Select Doctor</option>
+                </select>
+                <i class="fa fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="apptTypeM">Appointment Type <span class="required">*</span></label>
+              <div class="select-wrapper">
+                <select id="apptTypeM" required>
+                  <option value="">Select Type</option>
+                  <option>Consultation</option>
+                  <option>Follow-up</option>
+                  <option>Emergency</option>
+                  <option>Lab Test</option>
+                  <option>Surgery</option>
+                </select>
+                <i class="fa fa-chevron-down"></i>
+              </div>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="apptDate">Date <span class="required">*</span></label>
+              <input type="date" id="apptDate" required />
+            </div>
+            <div class="form-group">
+              <label for="apptTime">Time <span class="required">*</span></label>
+              <input type="time" id="apptTime" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="apptNotes">Notes / Reason</label>
+            <textarea id="apptNotes" rows="2" placeholder="Reason for visit or additional notes…"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="apptStatus">Status</label>
+            <div class="select-wrapper">
+              <select id="apptStatus">
+                <option>Scheduled</option>
+                <option>Pending</option>
+                <option>Completed</option>
+                <option>Cancelled</option>
+              </select>
+              <i class="fa fa-chevron-down"></i>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn-outline" onclick="closeApptModal()">Cancel</button>
+            <button type="submit" class="btn-primary"><i class="fa fa-check"></i> Save Appointment</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bill Modal -->
+  <div class="modal-overlay hidden" id="billModal">
+    <div class="modal modal-lg">
+      <div class="modal-header">
+        <h3><i class="fa fa-file-invoice-dollar"></i> Generate Bill</h3>
+        <button class="modal-close" onclick="closeBillModal()"><i class="fa fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="billForm" onsubmit="saveBill(event)">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="billPatient">Patient <span class="required">*</span></label>
+              <div class="select-wrapper">
+                <select id="billPatient" required onchange="fillPatientBillInfo()">
+                  <option value="">Select Patient</option>
+                </select>
+                <i class="fa fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="billDate">Bill Date <span class="required">*</span></label>
+              <input type="date" id="billDate" required />
+            </div>
+          </div>
+          <div id="billPatientInfo" class="patient-info-strip hidden"></div>
+
+          <!-- Services Table -->
+          <div class="bill-services">
+            <div class="bill-services-header">
+              <h4><i class="fa fa-list-check"></i> Services / Items</h4>
+              <button type="button" class="btn-outline btn-sm" onclick="addBillRow()"><i class="fa fa-plus"></i> Add Row</button>
+            </div>
+            <table class="data-table services-table">
+              <thead>
+                <tr>
+                  <th>Service / Description</th>
+                  <th>Category</th>
+                  <th>Qty</th>
+                  <th>Rate (₹)</th>
+                  <th>Amount (₹)</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="billServicesBody"></tbody>
+            </table>
+          </div>
+
+          <!-- Totals -->
+          <div class="bill-totals">
+            <div class="bill-total-row">
+              <span>Subtotal</span>
+              <span id="billSubtotal">₹0.00</span>
+            </div>
+            <div class="bill-total-row">
+              <span>Discount (%)</span>
+              <input type="number" id="billDiscount" value="0" min="0" max="100" oninput="calcBillTotal()" class="bill-mini-input" />
+            </div>
+            <div class="bill-total-row">
+              <span>Tax / GST (%)</span>
+              <input type="number" id="billTax" value="5" min="0" max="30" oninput="calcBillTotal()" class="bill-mini-input" />
+            </div>
+            <div class="bill-total-row total-row">
+              <span>Grand Total</span>
+              <span id="billGrandTotal">₹0.00</span>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="billPayMode">Payment Mode</label>
+              <div class="select-wrapper">
+                <select id="billPayMode">
+                  <option>Cash</option>
+                  <option>Card</option>
+                  <option>UPI</option>
+                  <option>Insurance</option>
+                  <option>Cheque</option>
+                </select>
+                <i class="fa fa-chevron-down"></i>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="billPayStatus">Payment Status</label>
+              <div class="select-wrapper">
+                <select id="billPayStatus">
+                  <option>Paid</option>
+                  <option>Pending</option>
+                  <option>Partial</option>
+                </select>
+                <i class="fa fa-chevron-down"></i>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="billNotes">Notes / Remarks</label>
+            <textarea id="billNotes" rows="2" placeholder="Additional notes or remarks…"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn-outline" onclick="closeBillModal()">Cancel</button>
+            <button type="submit" class="btn-primary"><i class="fa fa-check"></i> Generate Bill</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bill Invoice Modal (Print) -->
+  <div class="modal-overlay hidden" id="invoiceModal">
+    <div class="modal modal-lg">
+      <div class="modal-header no-print">
+        <h3><i class="fa fa-receipt"></i> Invoice</h3>
+        <div style="display:flex;gap:10px">
+          <button class="btn-outline" onclick="printInvoice()"><i class="fa fa-print"></i> Print</button>
+          <button class="modal-close" onclick="closeInvoiceModal()"><i class="fa fa-xmark"></i></button>
+        </div>
+      </div>
+      <div class="modal-body" id="invoiceContent"></div>
+    </div>
+  </div>
+
+  <!-- Patient Detail Modal -->
+  <div class="modal-overlay hidden" id="patientModal">
+    <div class="modal modal-lg">
+      <div class="modal-header">
+        <h3><i class="fa fa-hospital-user"></i> Patient Details</h3>
+        <button class="modal-close" onclick="closePatientModal()"><i class="fa fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="patientModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Doctor Modal -->
+  <div class="modal-overlay hidden" id="doctorModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="doctorModalTitle"><i class="fa fa-user-doctor"></i> Add Doctor</h3>
+        <button class="modal-close" onclick="closeDoctorModal()"><i class="fa fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="doctorForm" onsubmit="saveDoctor(event)">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="drName">Doctor Name <span class="required">*</span></label>
+              <input type="text" id="drName" placeholder="Dr. Full Name" required />
+            </div>
+            <div class="form-group">
+              <label for="drSpecialty">Specialty / Department <span class="required">*</span></label>
+              <div class="select-wrapper">
+                <select id="drSpecialty" required>
+                  <option value="">Select Specialty</option>
+                  <option>General Medicine</option>
+                  <option>Cardiology</option>
+                  <option>Orthopedics</option>
+                  <option>Neurology</option>
+                  <option>Pediatrics</option>
+                  <option>Gynecology</option>
+                  <option>Dermatology</option>
+                  <option>ENT</option>
+                  <option>Ophthalmology</option>
+                  <option>Dentistry</option>
+                  <option>Psychiatry</option>
+                </select>
+                <i class="fa fa-chevron-down"></i>
+              </div>
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="drPhone">Phone</label>
+              <input type="tel" id="drPhone" placeholder="+91 98765 43210" />
+            </div>
+            <div class="form-group">
+              <label for="drEmail">Email</label>
+              <input type="email" id="drEmail" placeholder="doctor@medicare.com" />
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="drExperience">Experience (Years)</label>
+              <input type="number" id="drExperience" placeholder="10" min="0" />
+            </div>
+            <div class="form-group">
+              <label for="drStatus">Availability</label>
+              <div class="select-wrapper">
+                <select id="drStatus">
+                  <option value="Available">Available</option>
+                  <option value="On Leave">On Leave</option>
+                  <option value="Busy">Busy</option>
+                </select>
+                <i class="fa fa-chevron-down"></i>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="drQualification">Qualification</label>
+            <input type="text" id="drQualification" placeholder="MBBS, MD, DNB…" />
+          </div>
+          <input type="hidden" id="drEditId" value="" />
+          <div class="modal-footer">
+            <button type="button" class="btn-outline" onclick="closeDoctorModal()">Cancel</button>
+            <button type="submit" class="btn-primary"><i class="fa fa-check"></i> Save Doctor</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- Confirm Dialog -->
+  <div class="modal-overlay hidden" id="confirmOverlay">
+    <div class="modal confirm-modal">
+      <div class="confirm-icon"><i class="fa fa-triangle-exclamation" id="confirmIcon"></i></div>
+      <h3 id="confirmTitle">Are you sure?</h3>
+      <p id="confirmMsg">This action cannot be undone.</p>
+      <div class="modal-footer">
+        <button class="btn-outline" onclick="resolveConfirm(false)">Cancel</button>
+        <button class="btn-danger" onclick="resolveConfirm(true)" id="confirmOkBtn">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

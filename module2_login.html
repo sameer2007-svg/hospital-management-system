@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 2 – Hospital Portal Login Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --navy: #0b1528;
+      --navy-card: #132238;
+      --accent: #06b6d4;
+      --slate: #94a3b8;
+      --white: #ffffff;
+      --danger: #ef4444;
+      --success: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, #1e3a5f 0%, #0b1528 65%, #050b14 100%);
+      color: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Top bar */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 36px;
+      background: rgba(11, 21, 40, 0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: white;
+    }
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #0284c7, #06b6d4);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: white;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4);
+    }
+    .brand-text h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    .brand-text span {
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-links a {
+      color: var(--slate);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: white;
+    }
+    .module-pill {
+      background: rgba(6, 182, 212, 0.15);
+      border: 1px solid rgba(6, 182, 212, 0.4);
+      color: #38bdf8;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    /* Main container */
+    .login-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    /* Glow backdrop */
+    .glow-circle {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(2, 132, 199, 0.25) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 460px;
+      background: rgba(19, 34, 56, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 38px 40px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      position: relative;
+      z-index: 5;
+    }
+
+    .card-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .card-header .pulse-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(2, 132, 199, 0.15);
+      border: 2px solid rgba(2, 132, 199, 0.3);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .card-header h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+    }
+    .card-header p {
+      font-size: 0.9rem;
+      color: var(--slate);
+      margin-top: 6px;
+    }
+
+    /* Form */
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+    .input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .input-wrap i.prefix-icon {
+      position: absolute;
+      left: 14px;
+      color: var(--slate);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+    .input-wrap input,
+    .input-wrap select {
+      width: 100%;
+      background: rgba(11, 21, 40, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 12px 14px 12px 42px;
+      font-size: 0.92rem;
+      color: white;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .input-wrap select {
+      appearance: none;
+      cursor: pointer;
+    }
+    .input-wrap i.select-arrow {
+      position: absolute;
+      right: 14px;
+      color: var(--slate);
+      pointer-events: none;
+      font-size: 0.8rem;
+    }
+    .input-wrap input:focus,
+    .input-wrap select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.25);
+    }
+    .toggle-pw {
+      position: absolute;
+      right: 14px;
+      background: transparent;
+      border: none;
+      color: var(--slate);
+      cursor: pointer;
+      font-size: 0.95rem;
+      padding: 4px;
+    }
+    .toggle-pw:hover {
+      color: white;
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+    }
+    .checkbox-lbl {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--slate);
+      cursor: pointer;
+      user-select: none;
+    }
+    .checkbox-lbl input {
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+    .forgot-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .forgot-link:hover {
+      text-decoration: underline;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
+      color: white;
+      border: none;
+      padding: 13px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: 'Outfit', sans-serif;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+      transition: all 0.25s ease;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
+    }
+
+    .credentials-badge {
+      margin-top: 22px;
+      background: rgba(2, 132, 199, 0.12);
+      border: 1px dashed rgba(6, 182, 212, 0.4);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.82rem;
+      color: #bae6fd;
+      text-align: center;
+    }
+    .credentials-badge strong {
+      color: white;
+    }
+
+    /* Feedback message */
+    .msg-box {
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      display: none;
+      align-items: center;
+      gap: 8px;
+    }
+    .msg-box.success {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6ee7b7;
+      display: flex;
+    }
+    .msg-box.error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <a href="index.html" class="brand">
+      <div class="brand-icon"><i class="fa-solid fa-hospital"></i></div>
+      <div class="brand-text">
+        <h1>MediCare Hospital</h1>
+        <span>Healthcare Portal</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <span class="module-pill"><i class="fa fa-link"></i> Module 2: Login Page</span>
+      <a href="module1_biodata.html"><i class="fa fa-file-lines"></i> Module 1</a>
+      <a href="module3_registration.html"><i class="fa fa-user-plus"></i> Module 3</a>
+      <a href="module4_validation.html"><i class="fa fa-shield-halved"></i> Module 4</a>
+      <a href="module5_database.html"><i class="fa fa-database"></i> Module 5</a>
+      <a href="index.html" style="color:#38bdf8;"><i class="fa fa-gauge"></i> Full System</a>
+    </div>
+  </header>
+
+  <!-- Login Card Section -->
+  <main class="login-wrapper">
+    <div class="glow-circle"></div>
+
+    <div class="login-card">
+      <div class="card-header">
+        <div class="pulse-icon"><i class="fa-solid fa-lock"></i></div>
+        <h2>Portal Login</h2>
+        <p>Access patient records, doctor queues &amp; billing</p>
+      </div>
+
+      <form id="authForm" onsubmit="loginUser(event)">
+        <!-- Role Selection -->
+        <div class="form-group">
+          <label for="role">Select Role</label>
+          <div class="input-wrap">
+            <i class="fa fa-id-badge prefix-icon"></i>
+            <select id="role" required>
+              <option value="admin">Administrator / Superuser</option>
+              <option value="doctor">Medical Doctor / Consultant</option>
+              <option value="receptionist" selected>Receptionist / Front Desk</option>
+              <option value="patient">Patient Portal</option>
+            </select>
+            <i class="fa fa-chevron-down select-arrow"></i>
+          </div>
+        </div>
+
+        <!-- Username / Email -->
+        <div class="form-group">
+          <label for="username">Username / Email ID</label>
+          <div class="input-wrap">
+            <i class="fa fa-envelope prefix-icon"></i>
+            <input type="text" id="username" placeholder="e.g. admin@medicare.com" required value="admin@medicare.com" />
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Security Password</label>
+          <div class="input-wrap">
+            <i class="fa fa-key prefix-icon"></i>
+            <input type="password" id="password" placeholder="••••••••" required value="admin123" />
+            <button type="button" class="toggle-pw" onclick="togglePassVisibility()" title="Show/Hide Password">
+              <i class="fa fa-eye" id="pwIcon"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Remember & Forgot -->
+        <div class="form-options">
+          <label class="checkbox-lbl">
+            <input type="checkbox" id="rememberMe" checked /> Remember login
+          </label>
+          <a href="#" class="forgot-link" onclick="alert('Password reset link sent to registered email address.'); return false;">Forgot Password?</a>
+        </div>
+
+        <!-- Sign In Button -->
+        <button type="submit" class="btn-submit" id="btnSignIn">
+          <span>Authorize &amp; Sign In</span>
+          <i class="fa fa-arrow-right"></i>
+        </button>
+
+        <div id="statusMessage" class="msg-box"></div>
+
+        <!-- Hint -->
+        <div class="credentials-badge">
+          <i class="fa fa-circle-info"></i> Demo Access: Username: <strong>admin@medicare.com</strong> | Password: <strong>admin123</strong>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    function togglePassVisibility() {
+      const pwInput = document.getElementById('password');
+      const icon = document.getElementById('pwIcon');
+      if (pwInput.type === 'password') {
+        pwInput.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        pwInput.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    function loginUser(e) {
+      e.preventDefault();
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value.trim();
+      const role = document.getElementById('role').value;
+      const msgBox = document.getElementById('statusMessage');
+      const btn = document.getElementById('btnSignIn');
+
+      if (!user || !pass) {
+        msgBox.className = 'msg-box error';
+        msgBox.innerHTML = '<i class="fa fa-triangle-exclamation"></i> Please enter both username and password.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Authenticating...';
+
+      setTimeout(() => {
+        msgBox.className = 'msg-box success';
+        msgBox.innerHTML = '<i class="fa fa-check-circle"></i> Login successful! Redirecting to Hospital Portal...';
+        
+        sessionStorage.setItem('medicare_logged_in', 'true');
+        sessionStorage.setItem('medicare_user_role', role);
+        sessionStorage.setItem('medicare_username', user);
+
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1200);
+      }, 800);
+    }
+  </script>
+</body>
+</html>

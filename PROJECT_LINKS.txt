@@ -1,0 +1,45 @@
+======================================================================
+MEDICARE HOSPITAL MANAGEMENT SYSTEM - OFFICIAL SUBMISSION LINKS & PDFS
+======================================================================
+
+GitHub Username: manikandan14112007
+Repository: https://github.com/manikandan14112007/hospital-management-system
+Base Website URL: https://manikandan14112007.github.io/hospital-management-system/
+
+----------------------------------------------------------------------
+MODULE 1: CREATE BIO DATA USING HTML (PDF REQUIRED)
+----------------------------------------------------------------------
+Local PDF File: Module_1_Biodata.pdf
+Live PDF URL:   https://manikandan14112007.github.io/hospital-management-system/Module_1_Biodata.pdf
+HTML Source:    https://manikandan14112007.github.io/hospital-management-system/module1_biodata.html
+
+----------------------------------------------------------------------
+MODULE 2: YOUR LOGIN PAGE (LINK REQUIRED)
+----------------------------------------------------------------------
+Live Link:      https://manikandan14112007.github.io/hospital-management-system/module2_login.html
+
+----------------------------------------------------------------------
+MODULE 3: REGISTRATION PAGE (PDF REQUIRED)
+----------------------------------------------------------------------
+Local PDF File: Module_3_Registration.pdf
+Live PDF URL:   https://manikandan14112007.github.io/hospital-management-system/Module_3_Registration.pdf
+HTML Source:    https://manikandan14112007.github.io/hospital-management-system/module3_registration.html
+
+----------------------------------------------------------------------
+MODULE 4: VALIDATION SCRIPTING PAGE (PDF REQUIRED)
+----------------------------------------------------------------------
+Local PDF File: Module_4_Validation_Scripting.pdf
+Live PDF URL:   https://manikandan14112007.github.io/hospital-management-system/Module_4_Validation_Scripting.pdf
+HTML Source:    https://manikandan14112007.github.io/hospital-management-system/module4_validation.html
+
+----------------------------------------------------------------------
+MODULE 5: DATABASE TABLE CREATION (LINK REQUIRED)
+----------------------------------------------------------------------
+Live Link:      https://manikandan14112007.github.io/hospital-management-system/module5_database.html
+Raw SQL File:   https://manikandan14112007.github.io/hospital-management-system/module5_database.sql
+
+----------------------------------------------------------------------
+MODULE 6: OVERALL FINAL PROJECT - HOSPITAL WEBSITE (LINK REQUIRED)
+----------------------------------------------------------------------
+Live Link:      https://manikandan14112007.github.io/hospital-management-system/index.html
+======================================================================

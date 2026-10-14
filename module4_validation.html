@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 4 – Form Validation Scripting Documentation &amp; Report</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --navy: #0f172a;
+      --slate: #334155;
+      --muted: #64748b;
+      --light-bg: #f8fafc;
+      --border: #e2e8f0;
+      --danger: #ef4444;
+      --success: #10b981;
+      --code-bg: #1e293b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f1f5f9;
+      color: var(--slate);
+      line-height: 1.6;
+      padding: 24px;
+    }
+
+    /* Action bar */
+    .action-bar {
+      max-width: 920px;
+      margin: 0 auto 20px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      padding: 14px 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+    .badge-module {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-weight: 700;
+      font-size: 0.82rem;
+      border-radius: 20px;
+    }
+    .btn-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+      transition: all 0.2s ease;
+    }
+    .btn-print:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
+    }
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 8px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+    }
+
+    /* Paper Container */
+    .report-paper {
+      max-width: 920px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 44px 50px;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      border-top: 6px solid var(--primary);
+    }
+
+    /* Report Header */
+    .report-header {
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 20px;
+      margin-bottom: 26px;
+    }
+    .report-header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      color: var(--navy);
+      font-weight: 800;
+    }
+    .report-header .sub {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-top: 4px;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* Headings */
+    h2.section-heading {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      color: var(--navy);
+      font-weight: 700;
+      margin: 26px 0 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1.5px solid #f1f5f9;
+      padding-bottom: 6px;
+    }
+    h2.section-heading i {
+      color: var(--primary);
+      font-size: 1.1rem;
+    }
+
+    p.body-text {
+      font-size: 0.92rem;
+      color: var(--slate);
+      margin-bottom: 14px;
+      text-align: justify;
+    }
+
+    /* Tables */
+    .rule-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 14px 0;
+    }
+    .rule-table th {
+      background: var(--navy);
+      color: white;
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+    .rule-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .rule-table tr:nth-child(even) {
+      background: #f8fafc;
+    }
+    .badge-rule {
+      font-family: 'Fira Code', monospace;
+      background: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+    .badge-block {
+      color: #b91c1c;
+      background: #fee2e2;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.78rem;
+    }
+    .badge-allow {
+      color: #15803d;
+      background: #dcfce7;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.78rem;
+    }
+
+    /* Code Snippet Box */
+    .code-container {
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 14px 0;
+      color: #e2e8f0;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      overflow-x: auto;
+    }
+    .code-comment { color: #64748b; }
+    .code-keyword { color: #38bdf8; font-weight: 600; }
+    .code-func { color: #f472b6; }
+    .code-string { color: #a3e635; }
+    .code-regex { color: #fbbf24; }
+
+    /* Interactive Testing Sandbox */
+    .sandbox-card {
+      background: #f8fafc;
+      border: 2px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .sandbox-title {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--navy);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .sandbox-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .test-input-group {
+      display: flex;
+      flex-direction: column;
+    }
+    .test-input-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .test-input {
+      padding: 8px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .test-input.error {
+      border-color: var(--danger) !important;
+      background: #fff5f5;
+      animation: shake 0.3s ease;
+    }
+    .error-tag {
+      font-size: 0.76rem;
+      color: var(--danger);
+      margin-top: 3px;
+      min-height: 16px;
+      display: block;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .action-bar {
+        display: none !important;
+      }
+      .report-paper {
+        box-shadow: none;
+        border-radius: 0;
+        border-top: none;
+        padding: 12mm;
+        max-width: 100%;
+      }
+      .sandbox-card {
+        border-style: solid;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 8mm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Bar -->
+  <div class="action-bar">
+    <div style="display:flex; align-items:center; gap: 12px;">
+      <a href="index.html" class="btn-nav"><i class="fa fa-arrow-left"></i> Main Portal</a>
+      <span class="badge-module"><i class="fa fa-shield-halved"></i> Module 4: Validation Scripting (PDF)</span>
+    </div>
+    <div style="display:flex; gap: 10px;">
+      <button class="btn-print" onclick="window.print()">
+        <i class="fa fa-file-pdf"></i> Print / Save as PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- Document Paper Sheet -->
+  <div class="report-paper">
+
+    <!-- Header -->
+    <header class="report-header">
+      <h1>Form Validation Scripting Report</h1>
+      <div class="sub">Client-Side JavaScript Validation Architecture &amp; Implementation</div>
+      <div class="meta-row">
+        <span><strong>Subject:</strong> Web Technology / Full Stack Development</span>
+        <span><strong>Application:</strong> MediCare Hospital Management System</span>
+        <span><strong>Script Language:</strong> JavaScript (ES6+)</span>
+        <span><strong>Date:</strong> 14-Oct-2026</span>
+      </div>
+    </header>
+
+    <!-- 1. Objective -->
+    <h2 class="section-heading"><i class="fa fa-bullseye"></i> 1. Aim and Objectives</h2>
+    <p class="body-text">
+      The primary objective of client-side validation in the Hospital Registration System is to ensure data integrity, enhance user experience (UX), and prevent invalid inputs before form submission. It prevents corrupt records (such as letters in contact numbers or digits in patient names) by intercepting keyboard events in real-time and evaluating regular expression (RegEx) constraints.
+    </p>
+
+    <!-- 2. Validation Matrix Table -->
+    <h2 class="section-heading"><i class="fa fa-table"></i> 2. Validation Rules &amp; Constraints Matrix</h2>
+    <table class="rule-table">
+      <thead>
+        <tr>
+          <th>Field Name</th>
+          <th>Rule Type</th>
+          <th>Allowed Input</th>
+          <th>Blocked Input</th>
+          <th>Regex Pattern</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Patient First &amp; Last Name</strong></td>
+          <td>Alpha-Only Restriction</td>
+          <td><span class="badge-allow">Letters (a-z, A-Z), Space</span></td>
+          <td><span class="badge-block">Numbers (0-9), Symbols (@#$)</span></td>
+          <td><span class="badge-rule">/^[a-zA-Z\s.'-]+$/</span></td>
+        </tr>
+        <tr>
+          <td><strong>Mobile / Emergency Phone</strong></td>
+          <td>Numeric + Special Symbol</td>
+          <td><span class="badge-allow">Digits (0-9), +, -, Space</span></td>
+          <td><span class="badge-block">Alphabets (a-z), Symbols</span></td>
+          <td><span class="badge-rule">/^[\d\s+\-()]{10,15}$/</span></td>
+        </tr>
+        <tr>
+          <td><strong>Pincode / Postal Code</strong></td>
+          <td>Exact 6 Digits</td>
+          <td><span class="badge-allow">Only Digits (0-9)</span></td>
+          <td><span class="badge-block">Letters, Spaces, Symbols</span></td>
+          <td><span class="badge-rule">/^\d{6}$/</span></td>
+        </tr>
+        <tr>
+          <td><strong>Email Address</strong></td>
+          <td>Standard RFC 5322</td>
+          <td><span class="badge-allow">Valid email (user@domain.com)</span></td>
+          <td><span class="badge-block">Missing @ or dot domain</span></td>
+          <td><span class="badge-rule">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span></td>
+        </tr>
+        <tr>
+          <td><strong>Patient Age</strong></td>
+          <td>Positive Integer Range</td>
+          <td><span class="badge-allow">Numbers between 0 and 125</span></td>
+          <td><span class="badge-block">Negative numbers, &gt;125</span></td>
+          <td><span class="badge-rule">0 &le; age &le; 125</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 3. Key Scripting Mechanisms -->
+    <h2 class="section-heading"><i class="fa fa-code"></i> 3. JavaScript Scripting Implementation</h2>
+    <p class="body-text">
+      The validation mechanism uses a two-tier defense approach:
+      <strong>Tier 1: Keystroke Interception (onKeypress / onInput)</strong> prevents illegal characters from appearing in the input box altogether.
+      <strong>Tier 2: Pattern Evaluation (onBlur / onSubmit)</strong> tests the complete field value and displays a red border, shake animation, and helpful error text if requirements are unmet.
+    </p>
+
+    <!-- Code Block 1: Real-time Keystroke Blocker -->
+    <div style="font-size:0.85rem; font-weight:600; color:var(--navy); margin-top:10px;">
+      Listing 3.1: Keystroke Filter for Name &amp; Phone Fields
+    </div>
+    <div class="code-container">
+<span class="code-comment">// 1. Restrict phone inputs: Block alphabetic characters on keydown/keypress</span>
+<span class="code-keyword">function</span> <span class="code-func">enforceNumericOnly</span>(event) {
+  <span class="code-keyword">const</span> allowedKeys = [<span class="code-string">'Backspace'</span>, <span class="code-string">'Tab'</span>, <span class="code-string">'ArrowLeft'</span>, <span class="code-string">'ArrowRight'</span>, <span class="code-string">'Delete'</span>];
+  <span class="code-keyword">if</span> (allowedKeys.<span class="code-func">includes</span>(event.key)) <span class="code-keyword">return</span>;
+  
+  <span class="code-comment">// Allow only digits, plus sign and hyphen</span>
+  <span class="code-keyword">if</span> (!<span class="code-regex">/[\d+\-\s]/</span>.<span class="code-func">test</span>(event.key)) {
+    event.<span class="code-func">preventDefault</span>(); <span class="code-comment">// Reject the character!</span>
+    showInputShake(event.target, <span class="code-string">"Numbers only! Alphabets are blocked."</span>);
+  }
+}
+
+<span class="code-comment">// 2. Restrict name inputs: Block digits</span>
+<span class="code-keyword">function</span> <span class="code-func">enforceAlphaOnly</span>(event) {
+  <span class="code-keyword">if</span> (<span class="code-regex">/[\d]/</span>.<span class="code-func">test</span>(event.key)) {
+    event.<span class="code-func">preventDefault</span>(); <span class="code-comment">// Block numbers</span>
+    showInputShake(event.target, <span class="code-string">"Letters only! Numbers are not allowed in names."</span>);
+  }
+}
+    </div>
+
+    <!-- Code Block 2: Field Validation and Error Rendering -->
+    <div style="font-size:0.85rem; font-weight:600; color:var(--navy); margin-top:10px;">
+      Listing 3.2: Complete Field Validator with Dynamic Error Message
+    </div>
+    <div class="code-container">
+<span class="code-keyword">function</span> <span class="code-func">validateField</span>(input) {
+  <span class="code-keyword">const</span> val = input.value.<span class="code-func">trim</span>();
+  <span class="code-keyword">const</span> fieldType = input.dataset.validate;
+  
+  <span class="code-keyword">if</span> (input.hasAttribute(<span class="code-string">'required'</span>) &amp;&amp; !val) {
+    <span class="code-keyword">return</span> setFieldError(input, <span class="code-string">"This field is required"</span>);
+  }
+  
+  <span class="code-keyword">if</span> (fieldType === <span class="code-string">'phone'</span> &amp;&amp; !<span class="code-regex">/^[\d+\-\s]{10,15}$/</span>.<span class="code-func">test</span>(val)) {
+    <span class="code-keyword">return</span> setFieldError(input, <span class="code-string">"Enter a valid 10-digit phone number"</span>);
+  }
+  
+  <span class="code-keyword">if</span> (fieldType === <span class="code-string">'pincode'</span> &amp;&amp; !<span class="code-regex">/^\d{6}$/</span>.<span class="code-func">test</span>(val)) {
+    <span class="code-keyword">return</span> setFieldError(input, <span class="code-string">"Pincode must be exactly 6 digits"</span>);
+  }
+  
+  <span class="code-keyword">if</span> (fieldType === <span class="code-string">'email'</span> &amp;&amp; !<span class="code-regex">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>.<span class="code-func">test</span>(val)) {
+    <span class="code-keyword">return</span> setFieldError(input, <span class="code-string">"Enter a valid email address (e.g. name@domain.com)"</span>);
+  }
+  
+  clearFieldError(input);
+  <span class="code-keyword">return</span> <span class="code-keyword">true</span>;
+}
+    </div>
+
+    <!-- 4. Interactive Live Sandbox -->
+    <h2 class="section-heading"><i class="fa fa-vial"></i> 4. Live Interactive Validation Sandbox</h2>
+    <div class="sandbox-card">
+      <div class="sandbox-title">
+        <i class="fa fa-flask" style="color:var(--primary);"></i>
+        Test The Live Scripting Rules (Try typing numbers into name or alphabets into phone):
+      </div>
+
+      <div class="sandbox-grid">
+        <div class="test-input-group">
+          <label>Patient Full Name (Alphabets only)</label>
+          <input type="text" id="demoName" class="test-input" placeholder="Type here (e.g. John Doe)" />
+          <span class="error-tag" id="demoNameErr"></span>
+        </div>
+
+        <div class="test-input-group">
+          <label>Phone Number (Numbers &amp; + only)</label>
+          <input type="text" id="demoPhone" class="test-input" placeholder="Type here (e.g. 9840123456)" />
+          <span class="error-tag" id="demoPhoneErr"></span>
+        </div>
+
+        <div class="test-input-group">
+          <label>Postal Pincode (6 digits only)</label>
+          <input type="text" id="demoPin" class="test-input" maxlength="6" placeholder="e.g. 600001" />
+          <span class="error-tag" id="demoPinErr"></span>
+        </div>
+
+        <div class="test-input-group">
+          <label>Email Address Format</label>
+          <input type="text" id="demoEmail" class="test-input" placeholder="e.g. doctor@hospital.com" />
+          <span class="error-tag" id="demoEmailErr"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Conclusion -->
+    <h2 class="section-heading"><i class="fa fa-clipboard-check"></i> 5. Verification &amp; Result</h2>
+    <p class="body-text">
+      The JavaScript client-side validation logic operates seamlessly across all modern browsers. Testing confirms that numeric inputs strictly prevent alphabetical keystrokes, name fields block numerical characters, and form progression is halted until all validation requirements pass.
+    </p>
+
+  </div>
+
+  <script>
+    // Live sandbox scripts
+    const demoName = document.getElementById('demoName');
+    const demoNameErr = document.getElementById('demoNameErr');
+    const demoPhone = document.getElementById('demoPhone');
+    const demoPhoneErr = document.getElementById('demoPhoneErr');
+    const demoPin = document.getElementById('demoPin');
+    const demoPinErr = document.getElementById('demoPinErr');
+    const demoEmail = document.getElementById('demoEmail');
+    const demoEmailErr = document.getElementById('demoEmailErr');
+
+    // Name: reject numbers
+    demoName.addEventListener('keypress', (e) => {
+      if (/[0-9]/.test(e.key)) {
+        e.preventDefault();
+        showErr(demoName, demoNameErr, 'Numbers are not allowed in name fields!');
+      }
+    });
+    demoName.addEventListener('input', () => {
+      if (/[0-9]/.test(demoName.value)) {
+        demoName.value = demoName.value.replace(/[0-9]/g, '');
+        showErr(demoName, demoNameErr, 'Numbers removed from name.');
+      } else {
+        clearErr(demoName, demoNameErr);
+      }
+    });
+
+    // Phone: reject letters
+    demoPhone.addEventListener('keypress', (e) => {
+      if (!/[\d+\-\s]/.test(e.key)) {
+        e.preventDefault();
+        showErr(demoPhone, demoPhoneErr, 'Alphabets & symbols are blocked in phone number!');
+      }
+    });
+    demoPhone.addEventListener('input', () => {
+      if (/[^\d+\-\s]/.test(demoPhone.value)) {
+        demoPhone.value = demoPhone.value.replace(/[^\d+\-\s]/g, '');
+        showErr(demoPhone, demoPhoneErr, 'Non-numeric characters removed.');
+      } else {
+        clearErr(demoPhone, demoPhoneErr);
+      }
+    });
+
+    // Pincode: reject non-digits
+    demoPin.addEventListener('keypress', (e) => {
+      if (!/\d/.test(e.key)) {
+        e.preventDefault();
+        showErr(demoPin, demoPinErr, 'Only digits (0-9) allowed for pincode!');
+      }
+    });
+    demoPin.addEventListener('input', () => {
+      if (/[^\d]/.test(demoPin.value)) {
+        demoPin.value = demoPin.value.replace(/[^\d]/g, '');
+      }
+      if (demoPin.value.length > 0 && demoPin.value.length < 6) {
+        showErr(demoPin, demoPinErr, `Pincode requires 6 digits (currently ${demoPin.value.length})`);
+      } else {
+        clearErr(demoPin, demoPinErr);
+      }
+    });
+
+    // Email
+    demoEmail.addEventListener('blur', () => {
+      const email = demoEmail.value.trim();
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showErr(demoEmail, demoEmailErr, 'Please enter a valid email format (e.g. user@domain.com)');
+      } else {
+        clearErr(demoEmail, demoEmailErr);
+      }
+    });
+
+    function showErr(inp, span, msg) {
+      inp.classList.add('error');
+      span.textContent = msg;
+      setTimeout(() => inp.classList.remove('error'), 350);
+    }
+    function clearErr(inp, span) {
+      inp.classList.remove('error');
+      span.textContent = '';
+    }
+  </script>
+</body>
+</html>
